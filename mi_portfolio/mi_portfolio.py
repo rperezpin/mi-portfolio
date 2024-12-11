@@ -3,10 +3,9 @@
 import reflex as rx
 
 from rxconfig import config
-
-from . import pages
-
+from . import pages, navigation
 from .ui.base import base_page
+
 
 class State(rx.State):
     """The app state."""
@@ -15,8 +14,7 @@ class State(rx.State):
 
 def index() -> rx.Component:
     # Welcome Page (Index)
-    return base_page(        
-        rx.vstack(
+    my_child = rx.vstack(
             rx.heading("Esto es reflex", size="9"),
             rx.text(
                 "Get started by editing ",
@@ -29,29 +27,11 @@ def index() -> rx.Component:
             ),
             spacing="5",
             justify="center",
-            min_height="85vh",
-        ),
-    )
-
-
-
-def contact() -> rx.Component:
-    # Welcome Page (Index)
-    return rx.container(
-        rx.color_mode.button(position="top-right"),
-        rx.vstack(
-            rx.heading("This is how you can contact me", size="9"),
-            rx.text(
-                "Email, phone and stuff",
-                size="5",
-            ),
-            ),
-            spacing="5",
-            justify="center",
+            align="center",
             min_height="85vh",
         )
+    return base_page(my_child)
+
 
 app = rx.App()
 app.add_page(index)
-app.add_page(pages.about, route='/about')
-app.add_page(contact, route='/contact')

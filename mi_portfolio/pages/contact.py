@@ -3,13 +3,13 @@ import reflex as rx
 from ..ui.base import base_page
 from .. import navigation
 
-@rx.page(route=navigation.routes.ABOUT_ROUTE)
-def about() -> rx.Component:
+@rx.page(route=navigation.routes.CONTACT_ROUTE)
+def contact() -> rx.Component:
     # Welcome Page (Index)
     my_child = rx.vstack(
-            rx.heading("Something about me", size="9"),
+            rx.heading("Contact page", size="9"),
             rx.text(
-                "My first about page!",
+                "Here you can contact me!",
                 size="5",
             ),
             spacing="5",
