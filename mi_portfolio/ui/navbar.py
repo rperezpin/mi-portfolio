@@ -22,7 +22,7 @@ def navbar() -> rx.Component:
                     ),
                     rx.link(
                         rx.heading(
-                            "Reflex", size="7", weight="bold"
+                            "rpi.dev", size="7", weight="bold"
                         ),
                         href=navigation.routes.HOME_ROUTE,
                         ),
