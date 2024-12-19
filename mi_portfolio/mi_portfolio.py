@@ -15,7 +15,7 @@ class State(rx.State):
 def index() -> rx.Component:
     # Welcome Page (Index)
     my_child = rx.vstack(
-            rx.heading("Esto es reflex", size="9"),
+            rx.heading("This will be my portfolio", size="9"),
             rx.text(
                 "Get started by editing ",
                 rx.code(f"{config.app_name}/{config.app_name}.py"),
