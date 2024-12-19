@@ -131,11 +131,12 @@ def create_timeline_item(text: str, icon: str, align: str) -> rx.Component:
                         "boxShadow": "0 4px 6px rgba(0,0,0,0.2)",
                     },
                 ),
-            ),
             style={
-                "position": "relative",
-                "transform": "translateX(-100%)" if not is_left else None,
+                "left": "5%" if is_left else "auto",
+                "right": "102%" if not is_left else "auto",
+                "top": "-80px",
             },
+            ),
         ),
         position="relative",
         style={
