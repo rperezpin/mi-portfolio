@@ -8,5 +8,7 @@ def base_page(child: rx.Component, *args, **kwargs)-> rx.Component:
         navbar(),
         rx.box(child),
         #rx.logo(),
-        rx.color_mode.button(position="bottom-left"),
+        rx.desktop_only(
+            rx.color_mode.button(position="bottom-left")
+            ),
     )

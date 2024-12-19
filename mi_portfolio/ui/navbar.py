@@ -50,9 +50,10 @@ def navbar() -> rx.Component:
                         border_radius="25%",
                     ),
                     rx.heading(
-                        "Reflex", size="6", weight="bold"
+                        "rpi.dev", size="6", weight="bold"
                     ),
                     align_items="center",
+                    justify="center",
                 ),
                 rx.menu.root(
                     rx.menu.trigger(
@@ -63,6 +64,8 @@ def navbar() -> rx.Component:
                         rx.menu.item("About", on_click=navigation.NavState.to_about),
                         rx.menu.item("Pricing", on_click=navigation.NavState.to_pricing),
                         rx.menu.item("Contact", on_click=navigation.NavState.to_contact),
+                        rx.divider(),
+                        rx.color_mode.button(justify="center"),
                     ),
                     justify="end",
                 ),
