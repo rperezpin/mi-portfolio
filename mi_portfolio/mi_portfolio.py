@@ -15,16 +15,16 @@ class State(rx.State):
 def index() -> rx.Component:
     # Welcome Page (Index)
     my_child = rx.vstack(
-            rx.heading("This will be my portfolio", size="9", 
-            align="center",),
+            rx.heading("Welcome to my place!", size="9", 
+            align="center"),
             rx.text(
-                "Get started by editing ",
-                rx.code(f"{config.app_name}/{config.app_name}.py"),
+                "In some way, this is the project about all my projects",                
                 size="5",
+                align="center"
             ),
             rx.link(
-                rx.button("Check out our about page!"),
-                href="/about",
+                rx.button("Come here to know a little more about me", rx.icon("corner-down-right")),
+                href=navigation.routes.ABOUT_ROUTE,                
             ),
             spacing="5",
             justify="center",

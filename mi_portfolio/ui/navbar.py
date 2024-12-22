@@ -30,7 +30,7 @@ def navbar() -> rx.Component:
                 ),
                 rx.hstack(
                     navbar_link("Home", navigation.routes.HOME_ROUTE),
-                    navbar_link("About", navigation.routes. ABOUT_ROUTE),
+                    navbar_link("About", navigation.routes.ABOUT_ROUTE),
                     navbar_link("Pricing", navigation.routes.PRICING_ROUTE),
                     navbar_link("Contact", navigation.routes.CONTACT_ROUTE),
                     spacing="5",
