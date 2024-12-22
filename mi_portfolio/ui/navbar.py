@@ -43,15 +43,21 @@ def navbar() -> rx.Component:
         rx.mobile_and_tablet(
             rx.hstack(
                 rx.hstack(
-                    rx.image(
-                        src="/logo.jpg",
-                        width="2em",
-                        height="auto",
-                        border_radius="25%",
-                    ),
-                    rx.heading(
-                        "rpi.dev", size="6", weight="bold"
-                    ),
+                    rx.link(
+                        rx.image(
+                            src="/logo.jpg",
+                            width="2em",
+                            height="auto",
+                            border_radius="25%",
+                        ),
+                        href=navigation.routes.HOME_ROUTE,
+                        ),
+                        rx.link(
+                            rx.heading(
+                                "rpi.dev", size="6", weight="bold"
+                            ),
+                            href=navigation.routes.HOME_ROUTE,
+                        ),
                     align_items="center",
                     justify="center",
                 ),

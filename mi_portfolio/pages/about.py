@@ -3,6 +3,13 @@ from ..ui.base import base_page
 from .. import navigation
 
 
+# Definir el estado para manejar el clic
+class TimelineState(rx.State):
+    @rx.event
+    def show_alert(self, text: str):
+        rx.window_alert(text)
+
+
 @rx.page(route=navigation.routes.ABOUT_ROUTE)
 def about() -> rx.Component:
     return base_page(
@@ -25,23 +32,27 @@ def about() -> rx.Component:
                     text="Comencé a estudiar programación en 2020.",
                     icon="graduation_cap",
                     align="left",
+                    button_text="Aquí aprendí poco",
                 ),
                 create_timeline_item(
                     text="Desarrollé mi primera aplicación en 2021.",
                     icon="laptop",
                     align="right",
+                    button_text="Aquí un poco más",
                 ),
                 create_timeline_item(
                     text="Trabajé en proyectos freelance en 2022.",
                     icon="rocket",
                     align="left",
+                    button_text="Aquí casi na",
                 ),
                 create_timeline_item(
                     text="Estoy mejorando mis habilidades como full-stack.",
                     icon="wrench",
                     align="right",
+                    button_text="Aquí soy un hacker",
                 ),
-                spacing="4",
+                spacing="6",  # Más espacio general
                 position="relative",
                 style={"width": "100%", "maxWidth": "800px", "margin": "auto"},
             ),
@@ -53,10 +64,7 @@ def about() -> rx.Component:
     )
 
 
-def create_timeline_item(text: str, icon: str, align: str) -> rx.Component:
-    """
-    Crea un elemento de la línea de tiempo con texto, ícono y alineación alternada.
-    """
+def create_timeline_item(text: str, icon: str, align: str, button_text: str) -> rx.Component:
     is_left = align == "left"
 
     return rx.box(
@@ -90,6 +98,15 @@ def create_timeline_item(text: str, icon: str, align: str) -> rx.Component:
                     "boxShadow": "0 4px 6px rgba(0,0,0,0.1)",
                     "maxWidth": "60%",
                     "textAlign": "left" if is_left else "right",
+                    "@media (max-width: 768px)": {  # Tablet
+                        "maxWidth": "80%",
+                        "padding": "1.5rem",
+                        "marginBottom": "2rem",  # Más espacio en tabletas
+                    },
+                    "@media (max-width: 480px)": {  # Mobile
+                        "maxWidth": "100%",
+                        "padding": "1rem",
+                    },
                 },
             ),
             justify="start" if is_left else "end",
@@ -97,6 +114,16 @@ def create_timeline_item(text: str, icon: str, align: str) -> rx.Component:
             style={
                 "paddingRight": "7rem" if is_left else "0",
                 "paddingLeft": "7rem" if not is_left else "0",
+                "@media (max-width: 768px)": {  # Tablet
+                    "paddingRight": "8rem" if is_left else "1rem",
+                    "paddingLeft": "8rem" if not is_left else "1rem",
+                    "width":"80%",
+                },
+                "@media (max-width: 480px)": {  # Mobile
+                    "paddingRight": "1rem" if is_left else "0.5rem",
+                    "paddingLeft": "1rem" if not is_left else "0.5rem",
+                    "width":"100%",
+                },
             },
         ),
         # Punto en la línea central con hover card
@@ -107,7 +134,10 @@ def create_timeline_item(text: str, icon: str, align: str) -> rx.Component:
                     style={
                         "position": "absolute",
                         "left": "50%",
-                        "top": "50%",
+                        "top": "50%",                          
+                        "@media (max-width: 480px)": {
+                            "top": "100%",
+                            },
                         "width": "16px",
                         "height": "16px",
                         "borderRadius": "50%",
@@ -121,7 +151,7 @@ def create_timeline_item(text: str, icon: str, align: str) -> rx.Component:
             rx.hover_card.content(
                 rx.box(
                     rx.text(
-                        f"Este es un evento relacionado: {text}.",
+                        f"{button_text}.",
                         style={"color": "white", "fontSize": "1rem", "lineHeight": "1.5"},
                     ),
                     style={
@@ -131,11 +161,17 @@ def create_timeline_item(text: str, icon: str, align: str) -> rx.Component:
                         "boxShadow": "0 4px 6px rgba(0,0,0,0.2)",
                     },
                 ),
-            style={
-                "left": "5%" if is_left else "auto",
-                "right": "102%" if not is_left else "auto",
-                "top": "-80px",
-            },
+                style={
+                    "left": "5%" if is_left else "auto",
+                    "right": "102%" if not is_left else "auto",
+                    "top": "-80px",
+                    "@media (max-width: 768px)": {  # Tablet
+                        "display": "none",
+                    },
+                    "@media (max-width: 480px)": {  # Mobile
+                        "display": "none",
+                    },
+                },
             ),
         ),
         position="relative",
@@ -144,4 +180,5 @@ def create_timeline_item(text: str, icon: str, align: str) -> rx.Component:
             "alignItems": "center",
             "transform": "translate(-50%, -50%)",
         },
+        onClick=rx.event(TimelineState.show_alert(button_text)),
     )
