@@ -13,19 +13,15 @@ def navbar() -> rx.Component:
                 rx.hstack(
                     rx.link(
                         rx.image(
-                            src="/logo.jpg",
-                            width="2.25em",
+                            src=rx.color_mode_cond(
+                                light="/logo_azul1.png",
+                                dark="/logo_blanco.png",
+                            ),
+                            width="7em",
                             height="auto",
-                            border_radius="25%",
                         ),
                         href=navigation.routes.HOME_ROUTE,
                     ),
-                    rx.link(
-                        rx.heading(
-                            "rpi.dev", size="7", weight="bold"
-                        ),
-                        href=navigation.routes.HOME_ROUTE,
-                        ),
                     align_items="center",
                 ),
                 rx.hstack(
@@ -45,19 +41,15 @@ def navbar() -> rx.Component:
                 rx.hstack(
                     rx.link(
                         rx.image(
-                            src="/logo.jpg",
-                            width="2em",
+                            src=rx.color_mode_cond(
+                                light="/logo_azul1.png",
+                                dark="/logo_blanco.png",
+                            ),
+                            width="7em",
                             height="auto",
-                            border_radius="25%",
                         ),
                         href=navigation.routes.HOME_ROUTE,
-                        ),
-                        rx.link(
-                            rx.heading(
-                                "rpi.dev", size="6", weight="bold"
-                            ),
-                            href=navigation.routes.HOME_ROUTE,
-                        ),
+                    ),
                     align_items="center",
                     justify="center",
                 ),
@@ -80,10 +72,7 @@ def navbar() -> rx.Component:
             ),
         ),
         bg=rx.color("accent", 3),
-        padding="1em",
-        # position="fixed",
-        # top="0px",
-        # z_index="5",
+        padding="0.5em",
         width="100%",
     )
 
