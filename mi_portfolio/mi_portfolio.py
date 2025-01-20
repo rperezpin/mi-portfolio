@@ -18,7 +18,8 @@ def index() -> rx.Component:
             rx.text(
                 "In some way, this is the project about all my projects",                
                 size="5",
-                align="center"
+                align="center",
+                padding="0.5em",
             ),
             rx.link(
                 rx.button("Come here to know a little more about me", rx.icon("corner-down-right")),
@@ -32,5 +33,12 @@ def index() -> rx.Component:
     return base_page(my_child)
 
 
-app = rx.App()
+app = rx.App(
+    theme=rx.theme(
+        appearance="inherit",
+        accent_color="iris",
+        gray_color="slate",
+    )
+)
+
 app.add_page(index)

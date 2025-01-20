@@ -58,14 +58,22 @@ def navbar() -> rx.Component:
                         rx.icon("menu", size=30)
                     ),
                     rx.menu.content(
-                        rx.menu.item("Home", on_click=navigation.NavState.to_home),
-                        rx.menu.item("About", on_click=navigation.NavState.to_about),
-                        rx.menu.item("Projects", on_click=navigation.NavState.to_projects),
-                        rx.menu.item("Contact", on_click=navigation.NavState.to_contact),
+                        rx.menu.item(
+                            rx.link("Home", href=navigation.routes.HOME_ROUTE, width="100%")
+                        ),
+                        rx.menu.item(
+                            rx.link("About", href=navigation.routes.ABOUT_ROUTE, width="100%")
+                        ),
+                        rx.menu.item(
+                            rx.link("Projects", href=navigation.routes.PROJECTS_ROUTE, width="100%")
+                        ),
+                        rx.menu.item(
+                            rx.link("Contact", href=navigation.routes.CONTACT_ROUTE, width="100%")
+                        ),
                         rx.divider(),
                         rx.color_mode.button(justify="center"),
                     ),
-                    justify="end",
+                    justify="start",
                 ),
                 justify="between",
                 align_items="center",

@@ -25,7 +25,7 @@ def projects() -> rx.Component:
                 rx.card(
                         rx.inset(
                             rx.image(
-                                src="/logo.jpg",
+                                src="/logo_negro.png",
                                 style=card_style,
                             ),
                             side="top",
@@ -38,7 +38,7 @@ def projects() -> rx.Component:
                     rx.card(
                         rx.inset(
                             rx.image(
-                                src="/logo.jpg",
+                                src="/logo_negro.png",
                                 style=card_style,
                             ),
                             side="top",
