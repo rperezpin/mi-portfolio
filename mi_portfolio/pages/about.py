@@ -4,13 +4,18 @@ from .. import navigation
 
 
 class ClickState(rx.State):
-    # Diccionario para almacenar el estado de visualización de cada texto
-    visible_texts: dict[str, str] = {}
+    # Inicializamos el diccionario con todos los textos ocultos por defecto
+    visible_texts: dict[str, str] = {
+        "text1": "hidden",
+        "text2": "hidden",
+        "text3": "hidden",
+        "text4": "hidden"
+    }
 
     def toggle_text(self, text_id: str):
         """Toggle la visibilidad de un texto específico."""
-        current = self.visible_texts.get(text_id, "none")
-        self.visible_texts[text_id] = "none" if current == "block" else "block"
+        current = self.visible_texts.get(text_id, "hidden")
+        self.visible_texts[text_id] = "hidden" if current == "block" else "block"
 
 
 @rx.page(route=navigation.routes.ABOUT_ROUTE)
@@ -57,7 +62,14 @@ def about() -> rx.Component:
                     button_text="Aquí soy un hacker",
                     text_id="text4",  # Identificador único
                 ),
-                spacing="6",
+                spacing=rx.cond(
+                    (ClickState.visible_texts["text1"] == "block") | 
+                    (ClickState.visible_texts["text2"] == "block") | 
+                    (ClickState.visible_texts["text3"] == "block") | 
+                    (ClickState.visible_texts["text4"] == "block"),
+                    "1rem",  # Más espacio cuando hay textos visibles
+                    "0.5rem"  # Espacio normal cuando están ocultos
+                ),
                 position="relative",
                 style={"width": "100%", "maxWidth": "800px", "margin": "auto"},
             ),
@@ -178,7 +190,12 @@ def create_timeline_item(text: str, icon: str, align: str, button_text: str, tex
                 style={
                     "position": "absolute",
                     "left": "50%",
-                    "top": "100%",                 
+                    "top": rx.cond(
+                        ClickState.visible_texts[text_id] == "block",
+                        "175%",
+                        "125%"
+                    ),
+                    "transition": "all 1.5s ease-in-out",
                     "width": "16px",
                     "height": "16px",
                     "borderRadius": "50%",
@@ -186,6 +203,7 @@ def create_timeline_item(text: str, icon: str, align: str, button_text: str, tex
                     "border": "4px solid white",
                     "transform": "translate(-50%, -50%)",
                     "boxShadow": "0 0 0 2px #3182CE",
+                    "cursor": "pointer",
                 },
                 on_click=lambda tid=text_id: ClickState.toggle_text(tid),
             ),
@@ -195,12 +213,40 @@ def create_timeline_item(text: str, icon: str, align: str, button_text: str, tex
                     style={"color": "white", "fontSize": "1rem", "lineHeight": "1.5"},
                 ),
                 style={
-                    "display": ClickState.visible_texts[text_id],                    
-                    "transition": "opacity 8s ease, transform 8s ease",  
+                    "visibility": rx.cond(
+                        ClickState.visible_texts[text_id] == "block",
+                        "visible",
+                        "hidden"
+                    ),
+                    "opacity": rx.cond(
+                        ClickState.visible_texts[text_id] == "block",
+                        "1",
+                        "0"
+                    ),
+                    "height": rx.cond(
+                        ClickState.visible_texts[text_id] == "block",
+                        "auto",
+                        "0"
+                    ),
+                    "position": "absolute",
+                    "left": "50%",
+                    "transform": rx.cond(
+                        ClickState.visible_texts[text_id] == "block",
+                        "translate(-50%, 0)",
+                        "translate(-50%, -20px)"
+                    ),
+                    "transition": "all 1.5s ease-in-out",
                     "backgroundColor": "#3182CE",
-                    "padding": "1rem",
+                    "padding": rx.cond(
+                        ClickState.visible_texts[text_id] == "block",
+                        "1rem",
+                        "0"
+                    ),
                     "borderRadius": "8px",
                     "boxShadow": "0 4px 6px rgba(0,0,0,0.2)",
+                    "width": "80%",
+                    "overflow": "hidden",
+                    "willChange": "transform, opacity, visibility, height, padding",
                 },
             ),
         ),
@@ -209,5 +255,12 @@ def create_timeline_item(text: str, icon: str, align: str, button_text: str, tex
             "left": "50%",
             "alignItems": "center",
             "transform": "translate(-50%, -50%)",
+            "marginBottom": rx.cond(
+                        ClickState.visible_texts[text_id] == "block",
+                        "6rem",
+                        "3rem"
+                    ),
+            "marginTop": "2rem",
+            "transition": "all 1.5s ease-in-out",
         },
     )
