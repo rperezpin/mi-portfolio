@@ -43,7 +43,6 @@ def timeline_item(text: str, icon: str, align: str, button_text: str, item_id: s
                     "@media (max-width: 768px)": {
                         "maxWidth": "80%",
                         "padding": "1.5rem",
-                        "marginBottom": "2rem",
                     },
                     "@media (max-width: 480px)": {
                         "maxWidth": "100%",
@@ -52,10 +51,11 @@ def timeline_item(text: str, icon: str, align: str, button_text: str, item_id: s
                 },
             ),
             justify="start" if is_left else "end",
+            align="center",
             width="100%",
             style={
-                "paddingRight": "4rem" if is_left else "0",
-                "paddingLeft": "4rem" if not is_left else "0",
+                "paddingRight": "4rem" if is_left else "1rem",
+                "paddingLeft": "4rem" if not is_left else "1rem",
             },
         ),
         # Hover card para el botón
@@ -74,26 +74,24 @@ def timeline_item(text: str, icon: str, align: str, button_text: str, item_id: s
                         "backgroundColor": "#3182CE",
                         "border": "4px solid white",
                         "boxShadow": "0 0 0 2px #3182CE",
+                        "marginTop": "4em",
+                        "marginBottom": "4em",
                     },
                 ),
             ),
             rx.hover_card.content(
-                rx.box(
                     rx.text(
                         button_text,
-                        style={"color": "white", "fontSize": "1rem"},
-                    ),
-                    style={
-                        "backgroundColor": "#3182CE",
-                        "padding": "1rem",
-                        "borderRadius": "8px",
-                        "boxShadow": "0 4px 6px rgba(0,0,0,0.2)",
-                        "position": "fixed",
-                        "top": "50%",
-                        "left": "50%",
-                        "transform": "translate(130%)" if is_left else "translate(30%)",
-                    },
-                ),
+                        style={"color": "white", 
+                               "fontSize": "1rem",
+                               "backgroundColor": "#3182CE",
+                               "padding": "1rem",
+                               "borderRadius": "8px",
+                               "boxShadow": "0 4px 6px rgba(0,0,0,0.2)", 
+                               },
+                    
+                ),                
+                align="start" if not is_left else "end",
             ),
         ),
         position="relative",
@@ -148,8 +146,10 @@ def about() -> rx.Component:
                         "width": "4px",
                         "backgroundColor": "#3182CE",
                         "transform": "translateX(-50%)",
+                        "marginTop": "4rem",
+                        "marginBottom": "9rem"
                     }
-                ),
+                ),            
                 # Items de la línea temporal
                 *[
                     timeline_item(
@@ -161,15 +161,31 @@ def about() -> rx.Component:
                     )
                     for item in timeline_items
                 ],
+
+              rx.box(
+                  rx.link(                      
+                      rx.button("Let's see some of my projects", 
+                          rx.icon("corner-down-right"),
+                          style={
+                              "position": "absolute",
+                              "left": "50%",
+                              "transform": "translateX(-50%)",
+                              }
+                              ),
+                              href=navigation.routes.PROJECTS_ROUTE,
+                        ),
+                        margin_y="4rem",
+                    ),
                 position="relative",
                 width="100%",
                 max_width="800px",
                 margin="auto",
                 spacing="4",
+                margin_bottom="4rem",
             ),
             style={
-                "minHeight": "100vh",
-                "marginTop": "8rem",
+                "minHeight": "85vh",
             },
+          
         ),
     )
