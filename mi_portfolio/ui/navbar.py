@@ -8,7 +8,7 @@ def navbar_link(text: str, url: str) -> rx.Component:
 
 def navbar() -> rx.Component:
     return rx.box(
-        rx.desktop_only(
+        rx.tablet_and_desktop(
             rx.hstack(
                 rx.hstack(
                     rx.link(
@@ -32,11 +32,11 @@ def navbar() -> rx.Component:
                     spacing="5",
                 ),
                 justify="center",
-                spacing="8",
+                spacing="6",
                 align_items="center",
             ),
         ),
-        rx.mobile_and_tablet(
+        rx.mobile_only(
             rx.hstack(
                 rx.hstack(
                     rx.link(

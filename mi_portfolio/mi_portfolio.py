@@ -22,7 +22,12 @@ def index() -> rx.Component:
                 padding="0.5em",
             ),
             rx.link(
-                rx.button("Come here to know a little more about me", rx.icon("corner-down-right")),
+                rx.button("Come here to know a little more about me", 
+                          rx.icon("corner-down-right"),
+                          style={
+                              "padding": "1.5rem",
+                              "borderRadius": "8px",
+                              }),
                 href=navigation.routes.ABOUT_ROUTE,                
             ),
             spacing="5",

@@ -170,6 +170,8 @@ def about() -> rx.Component:
                               "position": "absolute",
                               "left": "50%",
                               "transform": "translateX(-50%)",
+                              "padding": "1.5rem",
+                              "borderRadius": "8px",
                               }
                               ),
                               href=navigation.routes.PROJECTS_ROUTE,
