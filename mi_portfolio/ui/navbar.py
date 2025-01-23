@@ -1,5 +1,6 @@
 import reflex as rx
 from .. import navigation
+from ..pages.translations import LanguageState, translations
 
 def navbar_link(text: str, url: str) -> rx.Component:
     return rx.link(
@@ -30,6 +31,14 @@ def navbar() -> rx.Component:
                     navbar_link("Projects", navigation.routes.PROJECTS_ROUTE),
                     navbar_link("Contact", navigation.routes.CONTACT_ROUTE),
                     spacing="5",
+                ),
+                rx.button(
+                    rx.cond(
+                        LanguageState.language == "es",
+                        rx.text(translations["es"]["navbar"]["button"][0]),
+                        rx.text(translations["en"]["navbar"]["button"][0]),
+                    ),
+                    on_click=LanguageState.change_language,
                 ),
                 justify="center",
                 spacing="6",

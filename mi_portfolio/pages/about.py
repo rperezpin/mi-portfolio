@@ -1,6 +1,7 @@
 import reflex as rx
 from ..ui.base import base_page
 from .. import navigation
+from .translations import LanguageState, translations
 
 class TimelineState(rx.State):
     # Estado para controlar qué textos están visibles
@@ -104,28 +105,44 @@ def timeline_item(text: str, icon: str, align: str, button_text: str, item_id: s
 def about() -> rx.Component:
     timeline_items = [
         {
-            "text": "Comencé a estudiar programación en 2020",
+            "text": rx.cond(
+                        LanguageState.language == "es",
+                        rx.text(translations["es"]["about"]["timeline"][0]),
+                        rx.text(translations["en"]["about"]["timeline"][0]),
+                    ),
             "icon": "graduation_cap",
             "align": "left",
             "button_text": "Aquí aprendí poco",
             "id": "1"
         },
         {
-            "text": "Desarrollé mi primera aplicación en 2021",
+            "text":  rx.cond(
+                        LanguageState.language == "es",
+                        rx.text(translations["es"]["about"]["timeline"][1]),
+                        rx.text(translations["en"]["about"]["timeline"][1]),
+                    ),
             "icon": "laptop",
             "align": "right",
             "button_text": "Aquí un poco más",
             "id": "2"
         },
         {
-            "text": "Trabajé en proyectos freelance en 2022",
+            "text":  rx.cond(
+                        LanguageState.language == "es",
+                        rx.text(translations["es"]["about"]["timeline"][2]),
+                        rx.text(translations["en"]["about"]["timeline"][2]),
+                    ),
             "icon": "rocket",
             "align": "left",
             "button_text": "Aquí casi na",
             "id": "3"
         },
         {
-            "text": "Mejorando mis habilidades como full-stack",
+            "text":  rx.cond(
+                        LanguageState.language == "es",
+                        rx.text(translations["es"]["about"]["timeline"][3]),
+                        rx.text(translations["en"]["about"]["timeline"][3]),
+                    ),
             "icon": "wrench",
             "align": "right",
             "button_text": "Aquí soy un hacker",
