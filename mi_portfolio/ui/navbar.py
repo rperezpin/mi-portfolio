@@ -35,9 +35,16 @@ def navbar() -> rx.Component:
                 rx.button(
                     rx.cond(
                         LanguageState.language == "es",
-                        rx.text(translations["es"]["navbar"]["button"][0]),
+                        rx.text(translations["es"]["navbar"]["button"][0]),                        
                         rx.text(translations["en"]["navbar"]["button"][0]),
                     ),
+                    rx.cond(
+                        LanguageState.language == "es",
+                        rx.image(src="/english.png",
+                                 max_width="20px"),
+                        rx.image(src="/spanish.png",
+                                 max_width="20px"),
+                        ),
                     on_click=LanguageState.change_language,
                 ),
                 justify="center",
@@ -81,6 +88,16 @@ def navbar() -> rx.Component:
                         ),
                         rx.divider(),
                         rx.color_mode.button(justify="center"),
+                        rx.button(
+                            rx.cond(
+                                LanguageState.language == "es",
+                                rx.image(src="/english.png",
+                                         max_width="20px"),
+                                rx.image(src="/spanish.png",
+                                         max_width="20px"),
+                                ),
+                            on_click=LanguageState.change_language,
+                        ),
                     ),
                     justify="start",
                 ),
