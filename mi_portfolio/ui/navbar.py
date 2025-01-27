@@ -105,7 +105,10 @@ def navbar() -> rx.Component:
                 align_items="center",
             ),
         ),
-        bg=rx.color("accent", 3),
+        bg=rx.color_mode_cond(
+            light="#e3e6f6",  # Color para el modo claro
+            dark="gray_color",
+        ),
         padding="0.5em",
         width="100%",
     )

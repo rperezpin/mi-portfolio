@@ -164,7 +164,7 @@ def about() -> rx.Component:
                         "backgroundColor": "#3182CE",
                         "transform": "translateX(-50%)",
                         "marginTop": "4rem",
-                        "marginBottom": "9rem"
+                        "marginBottom": "8rem"
                     }
                 ),            
                 # Items de la línea temporal
@@ -193,14 +193,14 @@ def about() -> rx.Component:
                               ),
                               href=navigation.routes.PROJECTS_ROUTE,
                         ),
-                        margin_y="4rem",
+                        margin_top="4rem",
+                        margin_bottom="8rem",
                     ),
                 position="relative",
                 width="100%",
                 max_width="800px",
                 margin="auto",
                 spacing="4",
-                margin_bottom="4rem",
             ),
             style={
                 "minHeight": "85vh",

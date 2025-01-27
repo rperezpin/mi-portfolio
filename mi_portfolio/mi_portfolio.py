@@ -33,16 +33,16 @@ def index() -> rx.Component:
             spacing="5",
             justify="center",
             align="center",
-            min_height="85vh",
+            min_height="85vh",            
         )
     return base_page(my_child)
 
 
-app = rx.App(
+app = rx.App(    
     theme=rx.theme(
         accent_color="iris",
         gray_color="slate",
-    )
+    ),
 )
 
 app.add_page(index)
