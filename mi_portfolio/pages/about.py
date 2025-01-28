@@ -1,7 +1,8 @@
 import reflex as rx
 from ..ui.base import base_page
 from .. import navigation
-from .translations import LanguageState, translations
+from ..translations import translations
+from ..translations import translations, LanguageState
 
 class TimelineState(rx.State):
     # Estado para controlar qué textos están visibles

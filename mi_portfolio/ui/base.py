@@ -1,6 +1,7 @@
 import reflex as rx
 from .navbar import navbar
 
+
 def base_page(child: rx.Component, *args, **kwargs) -> rx.Component:
     return rx.fragment(
         navbar(),
@@ -21,7 +22,7 @@ def base_page(child: rx.Component, *args, **kwargs) -> rx.Component:
             dark=rx.box(
                 child,
                 style={
-                    "backgroundImage": "url('/bg7.jpeg')",
+                    "backgroundImage": "url('/bg1.jpeg')",
                     "backgroundSize": "cover",
                     "backgroundPosition": "center",
                     "backgroundAttachment": "fixed",  # El fondo se queda fijo al hacer scroll

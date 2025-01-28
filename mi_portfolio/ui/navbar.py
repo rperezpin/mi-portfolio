@@ -1,6 +1,7 @@
 import reflex as rx
 from .. import navigation
-from ..pages.translations import LanguageState, translations
+from ..translations import translations
+from ..translations import translations, LanguageState
 
 def navbar_link(text: str, url: str) -> rx.Component:
     return rx.link(
@@ -26,10 +27,36 @@ def navbar() -> rx.Component:
                     align_items="center",
                 ),
                 rx.hstack(
-                    navbar_link("Home", navigation.routes.HOME_ROUTE),
-                    navbar_link("About", navigation.routes.ABOUT_ROUTE),
-                    navbar_link("Projects", navigation.routes.PROJECTS_ROUTE),
-                    navbar_link("Contact", navigation.routes.CONTACT_ROUTE),
+                    navbar_link(
+                        rx.fragment(
+                        rx.cond(
+                            LanguageState.language == "es",
+                            rx.text(translations["es"]["navbar"]["headers"][0]),  
+                            rx.text(translations["en"]["navbar"]["headers"][0]),
+                            ), navigation.routes.HOME_ROUTE),
+                            ),
+                    navbar_link(
+                        rx.fragment(
+                        rx.cond(
+                            LanguageState.language == "es",
+                            rx.text(translations["es"]["navbar"]["headers"][1]), 
+                            rx.text(translations["en"]["navbar"]["headers"][1]),
+                            ), navigation.routes.ABOUT_ROUTE),
+                            ),
+                    navbar_link(
+                        rx.fragment(
+                        rx.cond(
+                            LanguageState.language == "es",
+                            rx.text(translations["es"]["navbar"]["headers"][2]),  
+                            rx.text(translations["en"]["navbar"]["headers"][2]),
+                            ), navigation.routes.PROJECTS_ROUTE),
+                            ),
+                    navbar_link(
+                        rx.cond(
+                            LanguageState.language == "es",
+                            rx.text(translations["es"]["navbar"]["headers"][3]), 
+                            rx.text(translations["en"]["navbar"]["headers"][3]),
+                            ), navigation.routes.CONTACT_ROUTE),
                     spacing="5",
                 ),
                 rx.button(
@@ -75,16 +102,36 @@ def navbar() -> rx.Component:
                     ),
                     rx.menu.content(
                         rx.menu.item(
-                            rx.link("Home", href=navigation.routes.HOME_ROUTE, width="100%")
+                            rx.link(
+                                rx.cond(
+                                    LanguageState.language == "es",
+                                    rx.text(translations["es"]["navbar"]["headers"][0]),   
+                                    rx.text(translations["en"]["navbar"]["headers"][0]),
+                                    ), href=navigation.routes.HOME_ROUTE, width="100%")
                         ),
                         rx.menu.item(
-                            rx.link("About", href=navigation.routes.ABOUT_ROUTE, width="100%")
+                            rx.link(
+                                rx.cond(
+                                    LanguageState.language == "es",
+                                    rx.text(translations["es"]["navbar"]["headers"][1]),
+                                    rx.text(translations["en"]["navbar"]["headers"][1]),
+                                    ), href=navigation.routes.ABOUT_ROUTE, width="100%")
                         ),
                         rx.menu.item(
-                            rx.link("Projects", href=navigation.routes.PROJECTS_ROUTE, width="100%")
+                            rx.link(
+                                rx.cond(
+                                    LanguageState.language == "es",
+                                    rx.text(translations["es"]["navbar"]["headers"][2]),
+                                    rx.text(translations["en"]["navbar"]["headers"][2]),
+                                    ), href=navigation.routes.PROJECTS_ROUTE, width="100%")
                         ),
                         rx.menu.item(
-                            rx.link("Contact", href=navigation.routes.CONTACT_ROUTE, width="100%")
+                            rx.link(
+                                rx.cond(
+                                    LanguageState.language == "es",
+                                    rx.text(translations["es"]["navbar"]["headers"][3]),                        
+                                    rx.text(translations["en"]["navbar"]["headers"][3]),
+                                ), href=navigation.routes.CONTACT_ROUTE, width="100%")
                         ),
                         rx.divider(),
                         rx.color_mode.button(justify="center"),
