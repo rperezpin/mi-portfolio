@@ -1,6 +1,5 @@
 import reflex as rx
 from .. import navigation
-from ..translations import translations
 from ..translations import translations, LanguageState
 
 def navbar_link(text: str, url: str) -> rx.Component:
@@ -28,50 +27,46 @@ def navbar() -> rx.Component:
                 ),
                 rx.hstack(
                     navbar_link(
-                        rx.fragment(
                         rx.cond(
-                            LanguageState.language == "es",
-                            rx.text(translations["es"]["navbar"]["headers"][0]),  
-                            rx.text(translations["en"]["navbar"]["headers"][0]),
-                            ), navigation.routes.HOME_ROUTE),
-                            ),
-                    navbar_link(
-                        rx.fragment(
-                        rx.cond(
-                            LanguageState.language == "es",
-                            rx.text(translations["es"]["navbar"]["headers"][1]), 
-                            rx.text(translations["en"]["navbar"]["headers"][1]),
-                            ), navigation.routes.ABOUT_ROUTE),
-                            ),
-                    navbar_link(
-                        rx.fragment(
-                        rx.cond(
-                            LanguageState.language == "es",
-                            rx.text(translations["es"]["navbar"]["headers"][2]),  
-                            rx.text(translations["en"]["navbar"]["headers"][2]),
-                            ), navigation.routes.PROJECTS_ROUTE),
-                            ),
+                            LanguageState.language == "es",  # Usamos el estado global de LanguageState
+                            translations["es"]["navbar"]["headers"][0],
+                            translations["en"]["navbar"]["headers"][0],
+                        ), navigation.routes.HOME_ROUTE
+                    ),
                     navbar_link(
                         rx.cond(
                             LanguageState.language == "es",
-                            rx.text(translations["es"]["navbar"]["headers"][3]), 
-                            rx.text(translations["en"]["navbar"]["headers"][3]),
-                            ), navigation.routes.CONTACT_ROUTE),
+                            translations["es"]["navbar"]["headers"][1],
+                            translations["en"]["navbar"]["headers"][1],
+                        ), navigation.routes.ABOUT_ROUTE
+                    ),
+                    navbar_link(
+                        rx.cond(
+                            LanguageState.language == "es",
+                            translations["es"]["navbar"]["headers"][2],
+                            translations["en"]["navbar"]["headers"][2],
+                        ), navigation.routes.PROJECTS_ROUTE
+                    ),
+                    navbar_link(
+                        rx.cond(
+                            LanguageState.language == "es",
+                            translations["es"]["navbar"]["headers"][3],
+                            translations["en"]["navbar"]["headers"][3],
+                        ), navigation.routes.CONTACT_ROUTE
+                    ),
                     spacing="5",
                 ),
                 rx.button(
                     rx.cond(
                         LanguageState.language == "es",
-                        rx.text(translations["es"]["navbar"]["button"][0]),                        
-                        rx.text(translations["en"]["navbar"]["button"][0]),
+                        translations["es"]["navbar"]["button"][0],                        
+                        translations["en"]["navbar"]["button"][0],
                     ),
                     rx.cond(
                         LanguageState.language == "es",
-                        rx.image(src="/english.png",
-                                 max_width="20px"),
-                        rx.image(src="/spanish.png",
-                                 max_width="20px"),
-                        ),
+                        rx.image(src="/english.png", max_width="20px"),
+                        rx.image(src="/spanish.png", max_width="20px"),
+                    ),
                     on_click=LanguageState.change_language,
                 ),
                 justify="center",
@@ -105,32 +100,32 @@ def navbar() -> rx.Component:
                             rx.link(
                                 rx.cond(
                                     LanguageState.language == "es",
-                                    rx.text(translations["es"]["navbar"]["headers"][0]),   
-                                    rx.text(translations["en"]["navbar"]["headers"][0]),
-                                    ), href=navigation.routes.HOME_ROUTE, width="100%")
+                                    translations["es"]["navbar"]["headers"][0],
+                                    translations["en"]["navbar"]["headers"][0],
+                                ), href=navigation.routes.HOME_ROUTE, width="100%")
                         ),
                         rx.menu.item(
                             rx.link(
                                 rx.cond(
                                     LanguageState.language == "es",
-                                    rx.text(translations["es"]["navbar"]["headers"][1]),
-                                    rx.text(translations["en"]["navbar"]["headers"][1]),
-                                    ), href=navigation.routes.ABOUT_ROUTE, width="100%")
+                                    translations["es"]["navbar"]["headers"][1],
+                                    translations["en"]["navbar"]["headers"][1],
+                                ), href=navigation.routes.ABOUT_ROUTE, width="100%")
                         ),
                         rx.menu.item(
                             rx.link(
                                 rx.cond(
                                     LanguageState.language == "es",
-                                    rx.text(translations["es"]["navbar"]["headers"][2]),
-                                    rx.text(translations["en"]["navbar"]["headers"][2]),
-                                    ), href=navigation.routes.PROJECTS_ROUTE, width="100%")
+                                    translations["es"]["navbar"]["headers"][2],
+                                    translations["en"]["navbar"]["headers"][2],
+                                ), href=navigation.routes.PROJECTS_ROUTE, width="100%")
                         ),
                         rx.menu.item(
                             rx.link(
                                 rx.cond(
                                     LanguageState.language == "es",
-                                    rx.text(translations["es"]["navbar"]["headers"][3]),                        
-                                    rx.text(translations["en"]["navbar"]["headers"][3]),
+                                    translations["es"]["navbar"]["headers"][3],
+                                    translations["en"]["navbar"]["headers"][3],
                                 ), href=navigation.routes.CONTACT_ROUTE, width="100%")
                         ),
                         rx.divider(),
@@ -138,11 +133,9 @@ def navbar() -> rx.Component:
                         rx.button(
                             rx.cond(
                                 LanguageState.language == "es",
-                                rx.image(src="/english.png",
-                                         max_width="20px"),
-                                rx.image(src="/spanish.png",
-                                         max_width="20px"),
-                                ),
+                                rx.image(src="/english.png", max_width="20px"),
+                                rx.image(src="/spanish.png", max_width="20px"),
+                            ),
                             on_click=LanguageState.change_language,
                         ),
                     ),
@@ -159,4 +152,3 @@ def navbar() -> rx.Component:
         padding="0.5em",
         width="100%",
     )
-

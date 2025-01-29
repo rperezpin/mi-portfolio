@@ -1,7 +1,6 @@
 import reflex as rx
 from ..ui.base import base_page
 from .. import navigation
-from ..translations import translations
 from ..translations import translations, LanguageState
 
 class TimelineState(rx.State):
@@ -65,7 +64,7 @@ def timeline_item(text: str, icon: str, align: str, button_text: str, item_id: s
             rx.hover_card.trigger(
                 rx.button(
                     "",
-                    on_click=TimelineState.toggle_text(item_id),
+                    on_click=lambda: TimelineState.toggle_text(item_id),  # Usamos on_click aquí
                     style={
                         "borderRadius": "50%",
                         "width": "16px",
@@ -82,17 +81,16 @@ def timeline_item(text: str, icon: str, align: str, button_text: str, item_id: s
                 ),
             ),
             rx.hover_card.content(
-                    rx.text(
-                        button_text,
-                        style={"color": "white", 
-                               "fontSize": "1rem",
-                               "backgroundColor": "#3182CE",
-                               "padding": "1rem",
-                               "borderRadius": "8px",
-                               "boxShadow": "0 4px 6px rgba(0,0,0,0.2)", 
-                               },
-                    
-                ),                
+                rx.text(
+                    button_text,
+                    style={"color": "white", 
+                           "fontSize": "1rem",
+                           "backgroundColor": "#3182CE",
+                           "padding": "1rem",
+                           "borderRadius": "8px",
+                           "boxShadow": "0 4px 6px rgba(0,0,0,0.2)", 
+                    },
+                ),
                 align="start" if not is_left else "end",
             ),
         ),
@@ -108,8 +106,8 @@ def about() -> rx.Component:
         {
             "text": rx.cond(
                         LanguageState.language == "es",
-                        rx.text(translations["es"]["about"]["timeline"][0]),
-                        rx.text(translations["en"]["about"]["timeline"][0]),
+                        translations["es"]["about"]["timeline"][0],
+                        translations["en"]["about"]["timeline"][0],
                     ),
             "icon": "graduation_cap",
             "align": "left",
@@ -119,8 +117,8 @@ def about() -> rx.Component:
         {
             "text":  rx.cond(
                         LanguageState.language == "es",
-                        rx.text(translations["es"]["about"]["timeline"][1]),
-                        rx.text(translations["en"]["about"]["timeline"][1]),
+                        translations["es"]["about"]["timeline"][1],
+                        translations["en"]["about"]["timeline"][1],
                     ),
             "icon": "laptop",
             "align": "right",
@@ -130,8 +128,8 @@ def about() -> rx.Component:
         {
             "text":  rx.cond(
                         LanguageState.language == "es",
-                        rx.text(translations["es"]["about"]["timeline"][2]),
-                        rx.text(translations["en"]["about"]["timeline"][2]),
+                        translations["es"]["about"]["timeline"][2],
+                        translations["en"]["about"]["timeline"][2],
                     ),
             "icon": "rocket",
             "align": "left",
@@ -141,8 +139,8 @@ def about() -> rx.Component:
         {
             "text":  rx.cond(
                         LanguageState.language == "es",
-                        rx.text(translations["es"]["about"]["timeline"][3]),
-                        rx.text(translations["en"]["about"]["timeline"][3]),
+                        translations["es"]["about"]["timeline"][3],
+                        translations["en"]["about"]["timeline"][3],
                     ),
             "icon": "wrench",
             "align": "right",
@@ -167,7 +165,7 @@ def about() -> rx.Component:
                         "marginTop": "4rem",
                         "marginBottom": "8rem"
                     }
-                ),            
+                ),
                 # Items de la línea temporal
                 *[
                     timeline_item(
@@ -180,23 +178,23 @@ def about() -> rx.Component:
                     for item in timeline_items
                 ],
 
-              rx.box(
-                  rx.link(                      
-                      rx.button("Let's see some of my projects", 
-                          rx.icon("corner-down-right"),
-                          style={
-                              "position": "absolute",
-                              "left": "50%",
-                              "transform": "translateX(-50%)",
-                              "padding": "1.5rem",
-                              "borderRadius": "8px",
-                              }
-                              ),
-                              href=navigation.routes.PROJECTS_ROUTE,
+                rx.box(
+                    rx.link(
+                        rx.button("Let's see some of my projects", 
+                            rx.icon("corner-down-right"),
+                            style={
+                                "position": "absolute",
+                                "left": "50%",
+                                "transform": "translateX(-50%)",
+                                "padding": "1.5rem",
+                                "borderRadius": "8px",
+                            }
                         ),
-                        margin_top="4rem",
-                        margin_bottom="8rem",
+                        href=navigation.routes.PROJECTS_ROUTE,
                     ),
+                    margin_top="4rem",
+                    margin_bottom="8rem",
+                ),
                 position="relative",
                 width="100%",
                 max_width="800px",
@@ -206,6 +204,5 @@ def about() -> rx.Component:
             style={
                 "minHeight": "85vh",
             },
-          
         ),
     )

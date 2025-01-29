@@ -3,14 +3,15 @@ from ..ui.base import base_page
 from .. import navigation
 
 card_style = {
-    "padding":"10px",
-    "width":"85%",
-    "height":"auto",
-    "margin":"auto",
+    "padding": "10px",
+    "width": "85%",
+    "height": "auto",
+    "margin": "auto",
     "marginTop": "10px",
     "marginBottom": "10px",
-    "border-radius": "10%",
-    }
+    "borderRadius": "10%",  # Corregido a camelCase
+}
+
 @rx.page(route=navigation.routes.PROJECTS_ROUTE)
 def projects() -> rx.Component:
     return base_page(
@@ -23,31 +24,31 @@ def projects() -> rx.Component:
             ),
             rx.grid(
                 rx.card(
-                        rx.inset(
-                            rx.image(
-                                src="/logo_negro.png",
-                                style=card_style,
-                            ),
-                            side="top",
-                            pb="current",
+                    rx.inset(
+                        rx.image(
+                            src="/logo_negro.png",
+                            style=card_style,
                         ),
-                        rx.text(
-                            f"Card 1",
-                        ),
+                        side="top",
+                        pb="current",
                     ),
-                    rx.card(
-                        rx.inset(
-                            rx.image(
-                                src="/logo_negro.png",
-                                style=card_style,
-                            ),
-                            side="top",
-                            pb="current",
-                        ),
-                        rx.text(
-                            f"Card 12",
-                        ),
+                    rx.text(
+                        f"Card 1",
                     ),
+                ),
+                rx.card(
+                    rx.inset(
+                        rx.image(
+                            src="/logo_negro.png",
+                            style=card_style,
+                        ),
+                        side="top",
+                        pb="current",
+                    ),
+                    rx.text(
+                        f"Card 12",
+                    ),
+                ),
                 gap="1rem",
                 grid_template_columns=[
                     "1fr",
