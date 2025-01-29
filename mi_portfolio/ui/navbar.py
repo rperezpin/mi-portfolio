@@ -8,6 +8,9 @@ def navbar_link(text: str, url: str) -> rx.Component:
     )
 
 def navbar() -> rx.Component:
+    # Usar el estado global LanguageState para obtener el idioma
+    language = LanguageState.language
+
     return rx.box(
         rx.tablet_and_desktop(
             rx.hstack(
@@ -28,28 +31,28 @@ def navbar() -> rx.Component:
                 rx.hstack(
                     navbar_link(
                         rx.cond(
-                            LanguageState.language == "es",  # Usamos el estado global de LanguageState
+                            language == "es",  # Usamos el valor actualizado de `language`
                             translations["es"]["navbar"]["headers"][0],
                             translations["en"]["navbar"]["headers"][0],
                         ), navigation.routes.HOME_ROUTE
                     ),
                     navbar_link(
                         rx.cond(
-                            LanguageState.language == "es",
+                            language == "es",
                             translations["es"]["navbar"]["headers"][1],
                             translations["en"]["navbar"]["headers"][1],
                         ), navigation.routes.ABOUT_ROUTE
                     ),
                     navbar_link(
                         rx.cond(
-                            LanguageState.language == "es",
+                            language == "es",
                             translations["es"]["navbar"]["headers"][2],
                             translations["en"]["navbar"]["headers"][2],
                         ), navigation.routes.PROJECTS_ROUTE
                     ),
                     navbar_link(
                         rx.cond(
-                            LanguageState.language == "es",
+                            language == "es",
                             translations["es"]["navbar"]["headers"][3],
                             translations["en"]["navbar"]["headers"][3],
                         ), navigation.routes.CONTACT_ROUTE
@@ -58,16 +61,16 @@ def navbar() -> rx.Component:
                 ),
                 rx.button(
                     rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         translations["es"]["navbar"]["button"][0],                        
                         translations["en"]["navbar"]["button"][0],
                     ),
                     rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         rx.image(src="/english.png", max_width="20px"),
                         rx.image(src="/spanish.png", max_width="20px"),
                     ),
-                    on_click=LanguageState.change_language,
+                    on_click=LanguageState.change_language,  # Llamamos la función para cambiar el idioma
                 ),
                 justify="center",
                 spacing="6",
@@ -99,7 +102,7 @@ def navbar() -> rx.Component:
                         rx.menu.item(
                             rx.link(
                                 rx.cond(
-                                    LanguageState.language == "es",
+                                    language == "es",
                                     translations["es"]["navbar"]["headers"][0],
                                     translations["en"]["navbar"]["headers"][0],
                                 ), href=navigation.routes.HOME_ROUTE, width="100%")
@@ -107,7 +110,7 @@ def navbar() -> rx.Component:
                         rx.menu.item(
                             rx.link(
                                 rx.cond(
-                                    LanguageState.language == "es",
+                                    language == "es",
                                     translations["es"]["navbar"]["headers"][1],
                                     translations["en"]["navbar"]["headers"][1],
                                 ), href=navigation.routes.ABOUT_ROUTE, width="100%")
@@ -115,7 +118,7 @@ def navbar() -> rx.Component:
                         rx.menu.item(
                             rx.link(
                                 rx.cond(
-                                    LanguageState.language == "es",
+                                    language == "es",
                                     translations["es"]["navbar"]["headers"][2],
                                     translations["en"]["navbar"]["headers"][2],
                                 ), href=navigation.routes.PROJECTS_ROUTE, width="100%")
@@ -123,7 +126,7 @@ def navbar() -> rx.Component:
                         rx.menu.item(
                             rx.link(
                                 rx.cond(
-                                    LanguageState.language == "es",
+                                    language == "es",
                                     translations["es"]["navbar"]["headers"][3],
                                     translations["en"]["navbar"]["headers"][3],
                                 ), href=navigation.routes.CONTACT_ROUTE, width="100%")
@@ -132,7 +135,7 @@ def navbar() -> rx.Component:
                         rx.color_mode.button(justify="center"),
                         rx.button(
                             rx.cond(
-                                LanguageState.language == "es",
+                                language == "es",
                                 rx.image(src="/english.png", max_width="20px"),
                                 rx.image(src="/spanish.png", max_width="20px"),
                             ),
