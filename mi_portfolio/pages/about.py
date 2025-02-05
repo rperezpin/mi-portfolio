@@ -111,7 +111,11 @@ def about() -> rx.Component:
                     ),
             "icon": "graduation_cap",
             "align": "left",
-            "button_text": "Aquí aprendí poco",
+            "button_text":  rx.cond(
+                        LanguageState.language == "es",
+                        translations["es"]["about"]["time_step"][0],
+                        translations["en"]["about"]["time_step"][0],
+                    ),            
             "id": "1"
         },
         {
@@ -122,7 +126,11 @@ def about() -> rx.Component:
                     ),
             "icon": "laptop",
             "align": "right",
-            "button_text": "Aquí un poco más",
+            "button_text":  rx.cond(
+                        LanguageState.language == "es",
+                        translations["es"]["about"]["time_step"][1],
+                        translations["en"]["about"]["time_step"][1],
+                    ),            
             "id": "2"
         },
         {
@@ -133,7 +141,11 @@ def about() -> rx.Component:
                     ),
             "icon": "rocket",
             "align": "left",
-            "button_text": "Aquí casi na",
+            "button_text":  rx.cond(
+                        LanguageState.language == "es",
+                        translations["es"]["about"]["time_step"][2],
+                        translations["en"]["about"]["time_step"][2],
+                    ),            
             "id": "3"
         },
         {
@@ -144,8 +156,87 @@ def about() -> rx.Component:
                     ),
             "icon": "wrench",
             "align": "right",
-            "button_text": "Aquí soy un hacker",
+            "button_text":  rx.cond(
+                        LanguageState.language == "es",
+                        translations["es"]["about"]["time_step"][3],
+                        translations["en"]["about"]["time_step"][3],
+                    ),            
             "id": "4"
+        },
+        {
+            "text":  rx.cond(
+                        LanguageState.language == "es",
+                        translations["es"]["about"]["timeline"][4],
+                        translations["en"]["about"]["timeline"][4],
+                    ),
+            "icon": "wrench",
+            "align": "left",
+            "button_text":  rx.cond(
+                        LanguageState.language == "es",
+                        translations["es"]["about"]["time_step"][4],
+                        translations["en"]["about"]["time_step"][4],
+                    ),            
+            "id": "5"
+        },
+        {
+            "text":  rx.cond(
+                        LanguageState.language == "es",
+                        translations["es"]["about"]["timeline"][5],
+                        translations["en"]["about"]["timeline"][5],
+                    ),
+            "icon": "wrench",
+            "align": "right",
+            "button_text":  rx.cond(
+                        LanguageState.language == "es",
+                        translations["es"]["about"]["time_step"][5],
+                        translations["en"]["about"]["time_step"][5],
+                    ),            
+            "id": "6"
+        },
+        {
+            "text":  rx.cond(
+                        LanguageState.language == "es",
+                        translations["es"]["about"]["timeline"][6],
+                        translations["en"]["about"]["timeline"][6],
+                    ),
+            "icon": "wrench",
+            "align": "left",
+            "button_text":  rx.cond(
+                        LanguageState.language == "es",
+                        translations["es"]["about"]["time_step"][6],
+                        translations["en"]["about"]["time_step"][6],
+                    ),            
+            "id": "7"
+        },
+        {
+            "text":  rx.cond(
+                        LanguageState.language == "es",
+                        translations["es"]["about"]["timeline"][7],
+                        translations["en"]["about"]["timeline"][7],
+                    ),
+            "icon": "wrench",
+            "align": "right",
+            "button_text":  rx.cond(
+                        LanguageState.language == "es",
+                        translations["es"]["about"]["time_step"][7],
+                        translations["en"]["about"]["time_step"][7],
+                    ),            
+            "id": "8"
+        },
+        {
+            "text":  rx.cond(
+                        LanguageState.language == "es",
+                        translations["es"]["about"]["timeline"][8],
+                        translations["en"]["about"]["timeline"][8],
+                    ),
+            "icon": "wrench",
+            "align": "left",
+            "button_text":  rx.cond(
+                        LanguageState.language == "es",
+                        translations["es"]["about"]["time_step"][8],
+                        translations["en"]["about"]["time_step"][8],
+                    ),            
+            "id": "9"
         },
     ]
 
