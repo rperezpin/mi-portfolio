@@ -102,17 +102,19 @@ def timeline_item(text: str, icon: str, align: str, button_text: str, item_id: s
 
 @rx.page(route=navigation.routes.ABOUT_ROUTE)
 def about() -> rx.Component:
+    language = LanguageState.language
+    
     timeline_items = [
         {
             "text": rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         translations["es"]["about"]["timeline"][0],
                         translations["en"]["about"]["timeline"][0],
                     ),
             "icon": "graduation_cap",
             "align": "left",
             "button_text":  rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         translations["es"]["about"]["time_step"][0],
                         translations["en"]["about"]["time_step"][0],
                     ),            
@@ -120,14 +122,14 @@ def about() -> rx.Component:
         },
         {
             "text":  rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         translations["es"]["about"]["timeline"][1],
                         translations["en"]["about"]["timeline"][1],
                     ),
             "icon": "laptop",
             "align": "right",
             "button_text":  rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         translations["es"]["about"]["time_step"][1],
                         translations["en"]["about"]["time_step"][1],
                     ),            
@@ -135,14 +137,14 @@ def about() -> rx.Component:
         },
         {
             "text":  rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         translations["es"]["about"]["timeline"][2],
                         translations["en"]["about"]["timeline"][2],
                     ),
             "icon": "rocket",
             "align": "left",
             "button_text":  rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         translations["es"]["about"]["time_step"][2],
                         translations["en"]["about"]["time_step"][2],
                     ),            
@@ -150,14 +152,14 @@ def about() -> rx.Component:
         },
         {
             "text":  rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         translations["es"]["about"]["timeline"][3],
                         translations["en"]["about"]["timeline"][3],
                     ),
             "icon": "wrench",
             "align": "right",
             "button_text":  rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         translations["es"]["about"]["time_step"][3],
                         translations["en"]["about"]["time_step"][3],
                     ),            
@@ -165,14 +167,14 @@ def about() -> rx.Component:
         },
         {
             "text":  rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         translations["es"]["about"]["timeline"][4],
                         translations["en"]["about"]["timeline"][4],
                     ),
             "icon": "wrench",
             "align": "left",
             "button_text":  rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         translations["es"]["about"]["time_step"][4],
                         translations["en"]["about"]["time_step"][4],
                     ),            
@@ -180,14 +182,14 @@ def about() -> rx.Component:
         },
         {
             "text":  rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         translations["es"]["about"]["timeline"][5],
                         translations["en"]["about"]["timeline"][5],
                     ),
             "icon": "wrench",
             "align": "right",
             "button_text":  rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         translations["es"]["about"]["time_step"][5],
                         translations["en"]["about"]["time_step"][5],
                     ),            
@@ -195,14 +197,14 @@ def about() -> rx.Component:
         },
         {
             "text":  rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         translations["es"]["about"]["timeline"][6],
                         translations["en"]["about"]["timeline"][6],
                     ),
             "icon": "wrench",
             "align": "left",
             "button_text":  rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         translations["es"]["about"]["time_step"][6],
                         translations["en"]["about"]["time_step"][6],
                     ),            
@@ -210,14 +212,14 @@ def about() -> rx.Component:
         },
         {
             "text":  rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         translations["es"]["about"]["timeline"][7],
                         translations["en"]["about"]["timeline"][7],
                     ),
             "icon": "wrench",
             "align": "right",
             "button_text":  rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         translations["es"]["about"]["time_step"][7],
                         translations["en"]["about"]["time_step"][7],
                     ),            
@@ -225,14 +227,14 @@ def about() -> rx.Component:
         },
         {
             "text":  rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         translations["es"]["about"]["timeline"][8],
                         translations["en"]["about"]["timeline"][8],
                     ),
             "icon": "wrench",
             "align": "left",
             "button_text":  rx.cond(
-                        LanguageState.language == "es",
+                        language == "es",
                         translations["es"]["about"]["time_step"][8],
                         translations["en"]["about"]["time_step"][8],
                     ),            

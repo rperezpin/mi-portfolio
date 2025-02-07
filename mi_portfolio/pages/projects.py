@@ -16,7 +16,7 @@ card_style = {
 def projects() -> rx.Component:
     return base_page(
         rx.vstack(
-            rx.heading("Here come everything I've done", size="9", align="center"),
+            rx.heading("Here comes everything I've done", size="9", align="center", margin_top="4rem"),
             rx.text(
                 "Look at this",
                 size="5",
@@ -61,6 +61,5 @@ def projects() -> rx.Component:
             ),
             justify="center",
             align="center",
-            marginTop="5rem",
         )
     )
