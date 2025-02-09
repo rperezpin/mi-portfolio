@@ -7,7 +7,7 @@ class LanguageState(rx.State):
 
     def change_language(self):
         """Switch the language between English and Spanish."""
-        self.language = "es" if self.language == "en" else "en"  # Cambio simple de idioma
+        self.language = "en" if self.language == "es" else "es"  # Cambio simple de idioma
 
 translations = {
     "es": {
