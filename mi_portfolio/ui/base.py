@@ -4,7 +4,8 @@ from .navbar import navbar
 
 def base_page(child: rx.Component, *args, **kwargs) -> rx.Component:
     return rx.fragment(
-        navbar(),
+        rx.box(id="top"),  # Punto de referencia para el scroll
+        navbar(),        
         rx.color_mode_cond(
             # En modo claro, aplicamos un fondo con imagen.
             light=rx.box(
@@ -34,4 +35,19 @@ def base_page(child: rx.Component, *args, **kwargs) -> rx.Component:
         rx.desktop_only(
             rx.color_mode.button(position="bottom-left")
         ),
+        # Botón flotante para volver arriba
+        rx.box(
+            rx.button(
+                rx.icon(tag="arrow-up"),
+                on_click=rx.scroll_to("top"),
+                variant="soft",
+                size="3",
+                radius="full",
+            ),
+            position="fixed",
+            bottom="2em",
+            right="2em",
+            z_index="1000",
+            style={"opacity": "0.9", ":hover": {"opacity": "1"}}
+        )
     )

@@ -58,6 +58,22 @@ def contact() -> rx.Component:
             ),
             rx.cond(ContactState.did_submit, ContactState.thank_you, ""),
             my_form,
+            rx.hstack(
+                rx.link(
+                    rx.icon("github"),
+                    href="https://github.com/rperezpin",
+                    target="_blank",
+                    color_scheme="gray"
+                ),
+                rx.link(
+                    rx.icon("linkedin"),
+                    href="https://www.linkedin.com/in/rub%C3%A9n-p%C3%A9rez-izuel-a02607189/",
+                    target="_blank",
+                    color_scheme="blue"
+                ),
+                spacing="4",
+                align="center"
+            ),
             spacing="5",
             justify="center",
             align="center",
