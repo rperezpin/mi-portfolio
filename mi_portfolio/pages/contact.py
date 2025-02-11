@@ -63,12 +63,14 @@ def contact() -> rx.Component:
                     rx.icon("github"),
                     href="https://github.com/rperezpin",
                     target="_blank",
+                    rel="noopener noreferrer",
                     color_scheme="gray"
                 ),
                 rx.link(
                     rx.icon("linkedin"),
                     href="https://www.linkedin.com/in/rub%C3%A9n-p%C3%A9rez-izuel-a02607189/",
                     target="_blank",
+                    rel="noopener noreferrer",
                     color_scheme="blue"
                 ),
                 spacing="4",

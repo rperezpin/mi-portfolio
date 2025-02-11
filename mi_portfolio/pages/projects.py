@@ -41,6 +41,22 @@ PROJECTS_DATA = [
                     ],
         "github_url": "https://github.com/rperezpin/expressBookReviews"
     },
+    {
+        "id": "card_2",
+        "title": "E-Plant Shopping con React",
+        "image": "/Captura desde 2025-02-11 20-35-48.png",
+        "description": "Plataforma e-commerce especializada en venta de plantas con funcionalidades específicas. Ofrece:",
+        "details": ["🛒 Sistema de carrito interactivo con gestión de cantidades",
+                    "📦 Persistencia de estado del carrito usando Redux Toolkit",
+                    "🖼️ Catálogo visual con cards de productos detalladas",
+                    "🔄 Actualización en tiempo real del contador del carrito",
+                    "⚛️ Arquitectura React con componentes modulares",
+                    "🧮 Cálculos automáticos de totales (por ítem y general)",
+                    "Tecnologías principales: React + Vite, Redux Toolkit",
+                    "Práctica para la implementación de una plataforma e-commerce con carrito interactivo.",
+                    ],
+        "github_url": "https://github.com/rperezpin/e-plantShopping"
+    },
     # Añadir los otros 4 proyectos aquí con sus datos específicos
 ]
 
@@ -101,7 +117,9 @@ def ProjectCard(
                     rx.link(
                         rx.icon("github", size=20),
                         href=github_url,
-                        margin_left="1em"
+                        margin_left="1em",
+                        target="_blank",  # Nueva pestaña
+                        rel="noopener noreferrer"  # Seguridad para nuevas pestañas
                     )
                 )
             ),
