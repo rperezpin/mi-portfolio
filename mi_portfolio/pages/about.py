@@ -273,7 +273,11 @@ def about() -> rx.Component:
 
                 rx.box(
                     rx.link(
-                        rx.button("Let's see some of my projects", 
+                        rx.button(  rx.cond(
+                        language == "es",
+                        translations["es"]["about"]["projects_button"][0],
+                        translations["en"]["about"]["projects_button"][0],
+                    ),  
                             rx.icon("corner-down-right"),
                             style={
                                 "position": "absolute",

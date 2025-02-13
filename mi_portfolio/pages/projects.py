@@ -1,6 +1,7 @@
 import reflex as rx
 from ..ui.base import base_page
 from .. import navigation
+from ..translations import translations, LanguageState
 
 card_style = {
     "padding": "10px",
@@ -23,7 +24,7 @@ PROJECTS_DATA = [
         "details": [
             "Tecnologías: Python, Reflex",
             "Características: Responsive design",
-            "Deploy: Docker y AWS"
+            "Deploy: Reflex Cloud"
         ],
         "github_url": "https://github.com/rperezpin/mi-portfolio"
     },
@@ -36,7 +37,7 @@ PROJECTS_DATA = [
                     "🔐 Autenticación JWT con registro/login de usuarios",
                     "✏️ Sistema de reseñas personalizadas (CRUD)",
                     "🚀 Desarrollado con Node.js/Express y almacenamiento en memoria",
-                    "Tecnologías principales: Express.js, JWT, REST API",
+                    "🛠️ Tecnologías principales: Express.js, JWT, REST API",
                     "Ideal para aprender sobre autenticación segura y manejo de sesiones en APIs",
                     ],
         "github_url": "https://github.com/rperezpin/expressBookReviews"
@@ -44,18 +45,58 @@ PROJECTS_DATA = [
     {
         "id": "card_2",
         "title": "E-Plant Shopping con React",
-        "image": "/Captura desde 2025-02-11 20-35-48.png",
+        "image": "/react-2.svg",
         "description": "Plataforma e-commerce especializada en venta de plantas con funcionalidades específicas. Ofrece:",
         "details": ["🛒 Sistema de carrito interactivo con gestión de cantidades",
                     "📦 Persistencia de estado del carrito usando Redux Toolkit",
                     "🖼️ Catálogo visual con cards de productos detalladas",
                     "🔄 Actualización en tiempo real del contador del carrito",
-                    "⚛️ Arquitectura React con componentes modulares",
-                    "🧮 Cálculos automáticos de totales (por ítem y general)",
-                    "Tecnologías principales: React + Vite, Redux Toolkit",
+                    "🛠️ Tecnologías principales: React + Vite, Redux Toolkit",
                     "Práctica para la implementación de una plataforma e-commerce con carrito interactivo.",
                     ],
         "github_url": "https://github.com/rperezpin/e-plantShopping"
+    },
+    {
+        "id": "card_3",
+        "title": "Broker MQTT para IoT con Node.js",
+        "image": "/MQTT 2(1).png",
+        "description": "Sistema de intermediario IoT para procesamiento de datos en tiempo real. Funcionalidades clave:",
+        "details": [
+            "📡 Implementación de broker MQTT escalable",
+            "🔁 Transformación de datos con pipelines personalizados",
+            "🗃️ Almacenamiento en MySQL con modelos de datos optimizados",
+            "🔒 Seguridad: Autenticación JWT + TLS para comunicaciones",
+            "🛠️ Tecnologías principales: Node.js, MySQL",
+            "🧩 Arquitectura modular para fácil expansión"
+        ],
+    },
+    {
+        "id": "card_4",
+        "title": "Monitorización IoT con Laravel",
+        "image": "/laravel-2.svg",
+        "description": "Sistema completo para gestión y visualización de datos IoT. Características principales:",
+        "details": [
+            "🌡️ Recepción de datos en tiempo real desde sensores IoT",
+            "📊 Dashboard interactivo con gráficos usando HighCharts",
+            "📈 Almacenamiento histórico en base de datos MySQL",
+            "🔔 Sistema de alertas configurable por umbrales",
+            "🛠️ Tecnologías principales: Laravel, MySQL, Bootstrap",
+            "🧩 Arquitectura escalable para manejar múltiples dispositivos simultáneamente"
+        ],
+    },
+    {
+        "id": "card_5",
+        "title": "API REST con FastAPI",
+        "image": "/fastapi-1.svg",
+        "description": "Backend moderno para sistema de gestión de contenidos. Incluye:",
+        "details": [
+            "🚀 Creación de endpoints REST con autenticación JWT",
+            "📄 Documentación interactiva automática con Swagger UI",
+            "🔐 Sistema de roles y permisos granular",
+            "🐳 Dockerización para despliegue en contenedores",
+            "🛠️ Tecnologías principales: FastAPI, PostgreSQL, Docker, JWT",
+            "🧩 Optimizado para alta concurrencia con async/await"
+        ],
     },
     # Añadir los otros 4 proyectos aquí con sus datos específicos
 ]
@@ -83,8 +124,8 @@ def ProjectCard(
                 src=image_src,
                 style=card_style,
             ),
-            side="top",
-            pb="current",
+            min_height="250px",
+            align_content="center",
         ),
         rx.heading(title, size="5"),
         rx.markdown(description),  # Cambiado a markdown para soportar enlaces
@@ -112,21 +153,24 @@ def ProjectCard(
                     "Mostrar menos ←",
                     "Leer más →",
                 ),
-                rx.cond(  # Icono GitHub si hay URL
+                rx.cond(
                     github_url,
                     rx.link(
                         rx.icon("github", size=20),
                         href=github_url,
                         margin_left="1em",
-                        target="_blank",  # Nueva pestaña
-                        rel="noopener noreferrer"  # Seguridad para nuevas pestañas
+                        target="_blank",
+                        rel="noopener noreferrer"
                     )
                 )
             ),
             on_click=ProjectState.toggle_show_more(card_id),
             variant="soft",
             size="1",
-            style={"marginTop": "1em"}
+            style={
+                "marginTop": "auto",
+                "alignSelf": "flex-end"
+            }
         ),
         style={  # Mejoras de estilo
             "boxShadow": "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px",
@@ -137,6 +181,8 @@ def ProjectCard(
 
 @rx.page(route=navigation.routes.PROJECTS_ROUTE)
 def projects() -> rx.Component:
+    language = LanguageState.language
+
     return base_page(
         rx.vstack(
             rx.heading("Here comes everything I've done", size="9", align="center", margin_top="4rem"),

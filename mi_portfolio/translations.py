@@ -51,6 +51,33 @@ translations = {
             ],
             "projects_button": ["Veamos algunos de mis proyectos"],
         },
+        "projects": {
+            "title":["Estos son algunos de mis proyectos"],
+            "timeline": [
+                "Soy Ingeniero Agrícola y Energético con especialización en Digitalización Agrícola.",
+                "Descubrí mi pasión por el análisis de datos aplicado a la agricultura inteligente.",
+                "Inicié mi carrera como Data Analyst, donde puse en práctica mis conocimientos técnicos.",
+                "Gané experiencia trabajando con Big Data y técnicas de Machine Learning en el sector agro.",
+                "Buscando nuevos retos, evolucioné profesionalmente hacia proyectos diferentes.",
+                "Comencé a desarrollar soluciones basadas en IoT para la agricultura de precisión.",
+                "Participé en el desarrollo integral de una plataforma tecnológica para la optimización agrícola.",
+                "Nunca he dejado de formarme en tecnologías emergentes y metodologías ágiles.",
+                "Hoy sigo aprendiendo y aplicando conocimientos en digitalización y desarrollo."
+            ],
+            "time_step": [
+                "Mi formación me abrió las puertas a mis primeros trabajos como ingeniero técnico.",
+                "Fue entonces cuando escribí mis primeras líneas de código aplicadas al sector.",
+                "Aprendí a analizar y modelar datos para la predicción de cosechas y optimización de cultivos.",
+                "Me especialicé en herramientas clave como Python, R, SQL y visualización de datos.",
+                "Perfeccioné mis habilidades en análisis avanzado de datos, IA y aprendizaje automático.",
+                "Aunque seguí en el ámbito de la digitalización agrícola, la exploré desde otra perspectiva.",
+                "Desarrollé software para plataformas de monitorización agrícola e IoT.",
+                "Trabajé en la configuración de servidores, broker MQTT, bases de datos y apps de visualización.",
+                "Profundicé en Ingeniería de Datos, Desarrollo de Aplicaciones, Inteligencia Artificial...",
+                "Y objetivo es seguir creciendo y abrirme a todo tipo de sectores."
+            ],
+            "projects_button": ["Veamos algunos de mis proyectos"],
+        },
     },
     "en": {
         "navbar": {
@@ -92,6 +119,33 @@ translations = {
                 "My goal is to continue growing and expand into different industries."
             ],
             "projects_button": ["Let's see some of my projects"],
+        },
+        "projects": {
+            "title":["This are some of my projects"],
+            "timeline": [
+                "Soy Ingeniero Agrícola y Energético con especialización en Digitalización Agrícola.",
+                "Descubrí mi pasión por el análisis de datos aplicado a la agricultura inteligente.",
+                "Inicié mi carrera como Data Analyst, donde puse en práctica mis conocimientos técnicos.",
+                "Gané experiencia trabajando con Big Data y técnicas de Machine Learning en el sector agro.",
+                "Buscando nuevos retos, evolucioné profesionalmente hacia proyectos diferentes.",
+                "Comencé a desarrollar soluciones basadas en IoT para la agricultura de precisión.",
+                "Participé en el desarrollo integral de una plataforma tecnológica para la optimización agrícola.",
+                "Nunca he dejado de formarme en tecnologías emergentes y metodologías ágiles.",
+                "Hoy sigo aprendiendo y aplicando conocimientos en digitalización y desarrollo."
+            ],
+            "time_step": [
+                "Mi formación me abrió las puertas a mis primeros trabajos como ingeniero técnico.",
+                "Fue entonces cuando escribí mis primeras líneas de código aplicadas al sector.",
+                "Aprendí a analizar y modelar datos para la predicción de cosechas y optimización de cultivos.",
+                "Me especialicé en herramientas clave como Python, R, SQL y visualización de datos.",
+                "Perfeccioné mis habilidades en análisis avanzado de datos, IA y aprendizaje automático.",
+                "Aunque seguí en el ámbito de la digitalización agrícola, la exploré desde otra perspectiva.",
+                "Desarrollé software para plataformas de monitorización agrícola e IoT.",
+                "Trabajé en la configuración de servidores, broker MQTT, bases de datos y apps de visualización.",
+                "Profundicé en Ingeniería de Datos, Desarrollo de Aplicaciones, Inteligencia Artificial...",
+                "Y objetivo es seguir creciendo y abrirme a todo tipo de sectores."
+            ],
+            "projects_button": ["Veamos algunos de mis proyectos"],
         },
     },
 }
