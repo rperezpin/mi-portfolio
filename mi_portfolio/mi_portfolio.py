@@ -3,6 +3,7 @@ import reflex as rx
 from rxconfig import config
 from . import pages, navigation
 from .ui.base import base_page
+from .translations import LanguageState, translations
 
 
 class State(rx.State):
@@ -10,19 +11,34 @@ class State(rx.State):
 
 
 def index() -> rx.Component:
-    # Welcome Page (Index)
+    language = LanguageState.language
     my_child = rx.vstack(
-            rx.heading("Welcome to my place!", size="9", 
+            rx.heading(
+                rx.cond(
+                    language == "es",
+                    translations["es"]["home"]["title"][0],
+                    translations["en"]["home"]["title"][0],
+                    ),
+                    size="9",
             align="center"),
             rx.text(
-                "In some way, this is the project about all my projects",                
-                size="5",
+                rx.cond(
+                    language == "es",
+                    translations["es"]["home"]["subtitle"][0],
+                    translations["en"]["home"]["subtitle"][0],
+                    ),
+                    size="5",
                 align="center",
                 padding="0.5em",
             ),
             rx.link(
-                rx.button("Come here to know a little more about me", 
-                          rx.icon("corner-down-right"),
+                rx.button(
+                rx.cond(
+                    language == "es",
+                    translations["es"]["home"]["home_button"][0],
+                    translations["en"]["home"]["home_button"][0],
+                    ),
+                    rx.icon("corner-down-right"),
                           style={
                               "padding": "1.5rem",
                               "borderRadius": "8px",

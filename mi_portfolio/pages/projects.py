@@ -18,87 +18,175 @@ card_style = {
 PROJECTS_DATA = [
     {
         "id": "card_0",
-        "title": "Portfolio Reflex",
+        "title": rx.cond(
+            LanguageState.language == "es",
+            translations["es"]["projects"]["cards"][0]["title"],
+            translations["en"]["projects"]["cards"][0]["title"]
+        ),
         "image": "/logo_negro.png",
-        "description": "Mi propio portfolio desarrollado con Reflex",
+        "description": rx.cond(
+            LanguageState.language == "es",
+            translations["es"]["projects"]["cards"][0]["description"],
+            translations["en"]["projects"]["cards"][0]["description"]
+        ),
         "details": [
-            "Tecnologías: Python, Reflex",
-            "Características: Responsive design",
-            "Deploy: Reflex Cloud"
+            rx.cond(
+                LanguageState.language == "es",
+                translations["es"]["projects"]["cards"][0]["details"][i],
+                translations["en"]["projects"]["cards"][0]["details"][i]
+            ) for i in range(3)
         ],
         "github_url": "https://github.com/rperezpin/mi-portfolio"
     },
     {
         "id": "card_1",
-        "title": "API de Librería con Autenticación",
+        "title": rx.cond(
+            LanguageState.language == "es",
+            translations["es"]["projects"]["cards"][1]["title"],
+            translations["en"]["projects"]["cards"][1]["title"]
+        ),
         "image": "/books-2247434.svg",
-        "description": "Sistema backend para gestión de libros y reseñas. Ofrece:",
-        "details": ["📚 Búsqueda de libros por ISBN, autor o título",
-                    "🔐 Autenticación JWT con registro/login de usuarios",
-                    "✏️ Sistema de reseñas personalizadas (CRUD)",
-                    "🚀 Desarrollado con Node.js/Express y almacenamiento en memoria",
-                    "🛠️ Tecnologías principales: Express.js, JWT, REST API",
-                    "Ideal para aprender sobre autenticación segura y manejo de sesiones en APIs",
-                    ],
+        "description": rx.cond(
+            LanguageState.language == "es",
+            translations["es"]["projects"]["cards"][1]["description"],
+            translations["en"]["projects"]["cards"][1]["description"]
+        ),
+        "details": [
+            rx.cond(
+                LanguageState.language == "es",
+                translations["es"]["projects"]["cards"][1]["details"][i],
+                translations["en"]["projects"]["cards"][1]["details"][i]
+            ) for i in range(6)
+        ],
         "github_url": "https://github.com/rperezpin/expressBookReviews"
     },
     {
         "id": "card_2",
-        "title": "E-Plant Shopping con React",
+        "title": rx.cond(
+            LanguageState.language == "es",
+            translations["es"]["projects"]["cards"][2]["title"],
+            translations["en"]["projects"]["cards"][2]["title"]
+        ),
         "image": "/react-2.svg",
-        "description": "Plataforma e-commerce especializada en venta de plantas con funcionalidades específicas. Ofrece:",
-        "details": ["🛒 Sistema de carrito interactivo con gestión de cantidades",
-                    "📦 Persistencia de estado del carrito usando Redux Toolkit",
-                    "🖼️ Catálogo visual con cards de productos detalladas",
-                    "🔄 Actualización en tiempo real del contador del carrito",
-                    "🛠️ Tecnologías principales: React + Vite, Redux Toolkit",
-                    "Práctica para la implementación de una plataforma e-commerce con carrito interactivo.",
-                    ],
+        "description": rx.cond(
+            LanguageState.language == "es",
+            translations["es"]["projects"]["cards"][2]["description"],
+            translations["en"]["projects"]["cards"][2]["description"]
+        ),
+        "details": [
+            rx.cond(
+                LanguageState.language == "es",
+                translations["es"]["projects"]["cards"][2]["details"][i],
+                translations["en"]["projects"]["cards"][2]["details"][i]
+            ) for i in range(5)
+        ],
         "github_url": "https://github.com/rperezpin/e-plantShopping"
     },
     {
         "id": "card_3",
-        "title": "Broker MQTT para IoT con Node.js",
+        "title": rx.cond(
+            LanguageState.language == "es",
+            "Broker MQTT para IoT con Node.js",
+            "IoT MQTT Broker with Node.js"
+        ),
         "image": "/MQTT 2(1).png",
-        "description": "Sistema de intermediario IoT para procesamiento de datos en tiempo real. Funcionalidades clave:",
+        "description": rx.cond(
+            LanguageState.language == "es",
+            "Sistema de intermediario IoT para procesamiento de datos en tiempo real. Funcionalidades clave:",
+            "IoT middleware system for real-time data processing. Key features:"
+        ),
         "details": [
-            "📡 Implementación de broker MQTT escalable",
-            "🔁 Transformación de datos con pipelines personalizados",
-            "🗃️ Almacenamiento en MySQL con modelos de datos optimizados",
-            "🔒 Seguridad: Autenticación JWT + TLS para comunicaciones",
-            "🛠️ Tecnologías principales: Node.js, MySQL",
-            "🧩 Arquitectura modular para fácil expansión"
+            rx.cond(
+                LanguageState.language == "es",
+                [
+                    "📡 Implementación de broker MQTT escalable",
+                    "🔁 Transformación de datos con pipelines personalizados",
+                    "🗃️ Almacenamiento en MySQL con modelos de datos optimizados",
+                    "🔒 Seguridad: Autenticación JWT + TLS para comunicaciones",
+                    "🛠️ Tecnologías principales: Node.js, MySQL",
+                    "🧩 Arquitectura modular para fácil expansión"
+                ][i],
+                [
+                    "📡 Scalable MQTT broker implementation",
+                    "🔁 Data transformation with custom pipelines",
+                    "🗃️ MySQL storage with optimized data models",
+                    "🔒 Security: JWT authentication + TLS communications",
+                    "🛠️ Main technologies: Node.js, MySQL",
+                    "🧩 Modular architecture for easy expansion"
+                ][i]
+            ) for i in range(6)
         ],
     },
     {
         "id": "card_4",
-        "title": "Monitorización IoT con Laravel",
+        "title": rx.cond(
+            LanguageState.language == "es",
+            "Monitorización IoT con Laravel",
+            "IoT Monitoring with Laravel"
+        ),
         "image": "/laravel-2.svg",
-        "description": "Sistema completo para gestión y visualización de datos IoT. Características principales:",
+        "description": rx.cond(
+            LanguageState.language == "es",
+            "Sistema completo para gestión y visualización de datos IoT. Características principales:",
+            "Complete system for IoT data management and visualization. Key features:"
+        ),
         "details": [
-            "🌡️ Recepción de datos en tiempo real desde sensores IoT",
-            "📊 Dashboard interactivo con gráficos usando HighCharts",
-            "📈 Almacenamiento histórico en base de datos MySQL",
-            "🔔 Sistema de alertas configurable por umbrales",
-            "🛠️ Tecnologías principales: Laravel, MySQL, Bootstrap",
-            "🧩 Arquitectura escalable para manejar múltiples dispositivos simultáneamente"
+            rx.cond(
+                LanguageState.language == "es",
+                [
+                    "🌡️ Recepción de datos en tiempo real desde sensores IoT",
+                    "📊 Dashboard interactivo con gráficos usando HighCharts",
+                    "📈 Almacenamiento histórico en base de datos MySQL",
+                    "🔔 Sistema de alertas configurable por umbrales",
+                    "🛠️ Tecnologías principales: Laravel, MySQL, Bootstrap",
+                    "🧩 Arquitectura escalable para manejar múltiples dispositivos simultáneamente"
+                ][i],
+                [
+                    "🌡️ Real-time data reception from IoT sensors",
+                    "📊 Interactive dashboard with HighCharts",
+                    "📈 Historical storage in MySQL database",
+                    "🔔 Configurable alert system by thresholds",
+                    "🛠️ Main technologies: Laravel, MySQL, Bootstrap",
+                    "🧩 Scalable architecture for handling multiple devices simultaneously"
+                ][i]
+            ) for i in range(6)
         ],
     },
     {
         "id": "card_5",
-        "title": "API REST con FastAPI",
+        "title": rx.cond(
+            LanguageState.language == "es",
+            "API REST con FastAPI",
+            "REST API with FastAPI"
+        ),
         "image": "/fastapi-1.svg",
-        "description": "Backend moderno para sistema de gestión de contenidos. Incluye:",
+        "description": rx.cond(
+            LanguageState.language == "es",
+            "Backend moderno para sistema de gestión de contenidos. Incluye:",
+            "Modern backend for content management system. Includes:"
+        ),
         "details": [
-            "🚀 Creación de endpoints REST con autenticación JWT",
-            "📄 Documentación interactiva automática con Swagger UI",
-            "🔐 Sistema de roles y permisos granular",
-            "🐳 Dockerización para despliegue en contenedores",
-            "🛠️ Tecnologías principales: FastAPI, PostgreSQL, Docker, JWT",
-            "🧩 Optimizado para alta concurrencia con async/await"
+            rx.cond(
+                LanguageState.language == "es",
+                [
+                    "🚀 Creación de endpoints REST con autenticación JWT",
+                    "📄 Documentación interactiva automática con Swagger UI",
+                    "🔐 Sistema de roles y permisos granular",
+                    "🐳 Dockerización para despliegue en contenedores",
+                    "🛠️ Tecnologías principales: FastAPI, PostgreSQL, Docker, JWT",
+                    "🧩 Optimizado para alta concurrencia con async/await"
+                ][i],
+                [
+                    "🚀 REST API creation with JWT authentication",
+                    "📄 Interactive Swagger UI documentation",
+                    "🔐 Granular role and permission system",
+                    "🐳 Dockerization for deployment in containers",
+                    "🛠️ Main technologies: FastAPI, PostgreSQL, Docker, JWT",
+                    "�� Optimized for high concurrency with async/await"
+                ][i]
+            ) for i in range(6)
         ],
     },
-    # Añadir los otros 4 proyectos aquí con sus datos específicos
 ]
 
 # Elimina la importación anterior de State y crea la clase aquí

@@ -21,7 +21,7 @@ translations = {
                 ],
         },
         "home": {
-            "title": ["Bienvenido a mi rincón!"],
+            "title": ["¡Bienvenido a mi rincón!"],
             "subtitle": ["De alguna forma, este es el proyecto sobre mis proyectos"],
             "home_button": ["Ven a conocer un poco más de mi"],
         },
@@ -53,6 +53,44 @@ translations = {
         },
         "projects": {
             "title":["Estos son algunos de mis proyectos"],
+            "cards": [
+                {
+                    "id": "card_0",
+                    "title": "Portfolio Reflex",
+                    "description": "Mi propio portfolio desarrollado con Reflex",
+                    "details": [
+                        "Tecnologías: Python, Reflex",
+                        "Características: Responsive design",
+                        "Deploy: Reflex Cloud"
+                    ]
+                },
+                {
+                    "id": "card_1",
+                    "title": "API de Librería con Autenticación",
+                    "description": "Sistema backend para gestión de libros y reseñas. Ofrece:",
+                    "details": [
+                        "📚 Búsqueda de libros por ISBN, autor o título",
+                        "🔐 Autenticación JWT con registro/login de usuarios",
+                        "✏️ Sistema de reseñas personalizadas (CRUD)",
+                        "🚀 Desarrollado con Node.js/Express y almacenamiento en memoria",
+                        "🛠️ Tecnologías principales: Express.js, JWT, REST API",
+                        "Ideal para aprender sobre autenticación segura y manejo de sesiones en APIs"
+                    ]
+                },
+                {
+                    "id": "card_2",
+                    "title": "API REST con FastAPI",
+                    "description": "Backend moderno para sistema de gestión de contenidos. Incluye:",
+                    "details": [
+                        "🚀 Creación de endpoints REST con autenticación JWT",
+                        "📄 Documentación interactiva automática con Swagger UI",
+                        "🔐 Sistema de roles y permisos granular",
+                        "🐳 Dockerización para despliegue en contenedores",
+                        "🛠️ Tecnologías principales: FastAPI, PostgreSQL, Docker, JWT",
+                        "🧩 Optimizado para alta concurrencia con async/await"
+                    ]
+                }
+            ],
             "timeline": [
                 "Soy Ingeniero Agrícola y Energético con especialización en Digitalización Agrícola.",
                 "Descubrí mi pasión por el análisis de datos aplicado a la agricultura inteligente.",
@@ -121,7 +159,45 @@ translations = {
             "projects_button": ["Let's see some of my projects"],
         },
         "projects": {
-            "title":["This are some of my projects"],
+            "title": ["These are some of my projects"],
+            "cards": [
+                {
+                    "id": "card_0",
+                    "title": "Reflex Portfolio",
+                    "description": "My own portfolio developed with Reflex",
+                    "details": [
+                        "Technologies: Python, Reflex",
+                        "Features: Responsive design", 
+                        "Deployment: Reflex Cloud"
+                    ]
+                },
+                {
+                    "id": "card_1", 
+                    "title": "Bookstore API with Authentication",
+                    "description": "Backend system for book and review management. Features:",
+                    "details": [
+                        "📚 Book search by ISBN, author or title",
+                        "🔐 JWT authentication with user registration/login",
+                        "✏️ Custom review system (CRUD operations)",
+                        "🚀 Built with Node.js/Express and in-memory storage",
+                        "🛠️ Main technologies: Express.js, JWT, REST API",
+                        "Ideal for learning secure authentication and session management in APIs"
+                    ]
+                },
+                {
+                    "id": "card_2",
+                    "title": "REST API with FastAPI",
+                    "description": "Modern backend for content management system. Includes:",
+                    "details": [
+                        "🚀 REST endpoints creation with JWT authentication",
+                        "📄 Automatic interactive documentation with Swagger UI",
+                        "🔐 Granular role-based permission system",
+                        "🐳 Dockerized for container deployment",
+                        "🛠️ Main technologies: FastAPI, PostgreSQL, Docker, JWT",
+                        "🧩 Optimized for high concurrency with async/await"
+                    ]
+                }
+            ],
             "timeline": [
                 "Soy Ingeniero Agrícola y Energético con especialización en Digitalización Agrícola.",
                 "Descubrí mi pasión por el análisis de datos aplicado a la agricultura inteligente.",
