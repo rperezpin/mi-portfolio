@@ -88,10 +88,16 @@ def timeline_item(text: str, icon: str, align: str, button_text: str, item_id: s
                            "backgroundColor": "#3182CE",
                            "padding": "1rem",
                            "borderRadius": "8px",
-                           "boxShadow": "0 4px 6px rgba(0,0,0,0.2)", 
+                           "boxShadow": "0 4px 6px rgba(0,0,0,0.2)",
+                           
                     },
                 ),
-                align="start" if not is_left else "end",
+                style={
+                    "@media (max-width: 480px)": {
+                        "maxWidth": "50%",
+                    },
+                    },
+                align="start" if not is_left else "end",                
             ),
         ),
         position="relative",
@@ -156,7 +162,7 @@ def about() -> rx.Component:
                         translations["es"]["about"]["timeline"][3],
                         translations["en"]["about"]["timeline"][3],
                     ),
-            "icon": "wrench",
+            "icon": "biceps-flexed",
             "align": "right",
             "button_text":  rx.cond(
                         language == "es",
@@ -171,7 +177,7 @@ def about() -> rx.Component:
                         translations["es"]["about"]["timeline"][4],
                         translations["en"]["about"]["timeline"][4],
                     ),
-            "icon": "wrench",
+            "icon": "split",
             "align": "left",
             "button_text":  rx.cond(
                         language == "es",
@@ -186,7 +192,7 @@ def about() -> rx.Component:
                         translations["es"]["about"]["timeline"][5],
                         translations["en"]["about"]["timeline"][5],
                     ),
-            "icon": "wrench",
+            "icon": "radio",
             "align": "right",
             "button_text":  rx.cond(
                         language == "es",
@@ -201,7 +207,7 @@ def about() -> rx.Component:
                         translations["es"]["about"]["timeline"][6],
                         translations["en"]["about"]["timeline"][6],
                     ),
-            "icon": "wrench",
+            "icon": "droplets",
             "align": "left",
             "button_text":  rx.cond(
                         language == "es",
@@ -216,7 +222,7 @@ def about() -> rx.Component:
                         translations["es"]["about"]["timeline"][7],
                         translations["en"]["about"]["timeline"][7],
                     ),
-            "icon": "wrench",
+            "icon": "book-open-text",
             "align": "right",
             "button_text":  rx.cond(
                         language == "es",
@@ -231,7 +237,7 @@ def about() -> rx.Component:
                         translations["es"]["about"]["timeline"][8],
                         translations["en"]["about"]["timeline"][8],
                     ),
-            "icon": "wrench",
+            "icon": "brain-circuit",
             "align": "left",
             "button_text":  rx.cond(
                         language == "es",

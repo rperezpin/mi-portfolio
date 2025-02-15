@@ -86,34 +86,20 @@ PROJECTS_DATA = [
         "id": "card_3",
         "title": rx.cond(
             LanguageState.language == "es",
-            "Broker MQTT para IoT con Node.js",
-            "IoT MQTT Broker with Node.js"
+            translations["es"]["projects"]["cards"][3]["title"],
+            translations["en"]["projects"]["cards"][3]["title"]
         ),
         "image": "/MQTT 2(1).png",
         "description": rx.cond(
             LanguageState.language == "es",
-            "Sistema de intermediario IoT para procesamiento de datos en tiempo real. Funcionalidades clave:",
-            "IoT middleware system for real-time data processing. Key features:"
+            translations["es"]["projects"]["cards"][3]["description"],
+            translations["en"]["projects"]["cards"][3]["description"]
         ),
         "details": [
             rx.cond(
                 LanguageState.language == "es",
-                [
-                    "📡 Implementación de broker MQTT escalable",
-                    "🔁 Transformación de datos con pipelines personalizados",
-                    "🗃️ Almacenamiento en MySQL con modelos de datos optimizados",
-                    "🔒 Seguridad: Autenticación JWT + TLS para comunicaciones",
-                    "🛠️ Tecnologías principales: Node.js, MySQL",
-                    "🧩 Arquitectura modular para fácil expansión"
-                ][i],
-                [
-                    "📡 Scalable MQTT broker implementation",
-                    "🔁 Data transformation with custom pipelines",
-                    "🗃️ MySQL storage with optimized data models",
-                    "🔒 Security: JWT authentication + TLS communications",
-                    "🛠️ Main technologies: Node.js, MySQL",
-                    "🧩 Modular architecture for easy expansion"
-                ][i]
+                translations["es"]["projects"]["cards"][3]["details"][i],
+                translations["en"]["projects"]["cards"][3]["details"][i]
             ) for i in range(6)
         ],
     },
@@ -121,34 +107,20 @@ PROJECTS_DATA = [
         "id": "card_4",
         "title": rx.cond(
             LanguageState.language == "es",
-            "Monitorización IoT con Laravel",
-            "IoT Monitoring with Laravel"
+            translations["es"]["projects"]["cards"][4]["title"],
+            translations["en"]["projects"]["cards"][4]["title"]
         ),
         "image": "/laravel-2.svg",
         "description": rx.cond(
             LanguageState.language == "es",
-            "Sistema completo para gestión y visualización de datos IoT. Características principales:",
-            "Complete system for IoT data management and visualization. Key features:"
+            translations["es"]["projects"]["cards"][4]["description"],
+            translations["en"]["projects"]["cards"][4]["description"]
         ),
         "details": [
             rx.cond(
                 LanguageState.language == "es",
-                [
-                    "🌡️ Recepción de datos en tiempo real desde sensores IoT",
-                    "📊 Dashboard interactivo con gráficos usando HighCharts",
-                    "📈 Almacenamiento histórico en base de datos MySQL",
-                    "🔔 Sistema de alertas configurable por umbrales",
-                    "🛠️ Tecnologías principales: Laravel, MySQL, Bootstrap",
-                    "🧩 Arquitectura escalable para manejar múltiples dispositivos simultáneamente"
-                ][i],
-                [
-                    "🌡️ Real-time data reception from IoT sensors",
-                    "📊 Interactive dashboard with HighCharts",
-                    "📈 Historical storage in MySQL database",
-                    "🔔 Configurable alert system by thresholds",
-                    "🛠️ Main technologies: Laravel, MySQL, Bootstrap",
-                    "🧩 Scalable architecture for handling multiple devices simultaneously"
-                ][i]
+                translations["es"]["projects"]["cards"][4]["details"][i],
+                translations["en"]["projects"]["cards"][4]["details"][i]
             ) for i in range(6)
         ],
     },
@@ -156,34 +128,20 @@ PROJECTS_DATA = [
         "id": "card_5",
         "title": rx.cond(
             LanguageState.language == "es",
-            "API REST con FastAPI",
-            "REST API with FastAPI"
+            translations["es"]["projects"]["cards"][5]["title"],
+            translations["en"]["projects"]["cards"][5]["title"]
         ),
         "image": "/fastapi-1.svg",
         "description": rx.cond(
             LanguageState.language == "es",
-            "Backend moderno para sistema de gestión de contenidos. Incluye:",
-            "Modern backend for content management system. Includes:"
+            translations["es"]["projects"]["cards"][5]["description"],
+            translations["en"]["projects"]["cards"][5]["description"]
         ),
         "details": [
             rx.cond(
                 LanguageState.language == "es",
-                [
-                    "🚀 Creación de endpoints REST con autenticación JWT",
-                    "📄 Documentación interactiva automática con Swagger UI",
-                    "🔐 Sistema de roles y permisos granular",
-                    "🐳 Dockerización para despliegue en contenedores",
-                    "🛠️ Tecnologías principales: FastAPI, PostgreSQL, Docker, JWT",
-                    "🧩 Optimizado para alta concurrencia con async/await"
-                ][i],
-                [
-                    "🚀 REST API creation with JWT authentication",
-                    "📄 Interactive Swagger UI documentation",
-                    "🔐 Granular role and permission system",
-                    "🐳 Dockerization for deployment in containers",
-                    "🛠️ Main technologies: FastAPI, PostgreSQL, Docker, JWT",
-                    "�� Optimized for high concurrency with async/await"
-                ][i]
+                translations["es"]["projects"]["cards"][5]["details"][i],
+                translations["en"]["projects"]["cards"][5]["details"][i]
             ) for i in range(6)
         ],
     },
@@ -222,7 +180,7 @@ def ProjectCard(
             rx.vstack(
                 *[rx.text(
                     detail,
-                    style={  # Nuevo estilo para los detalles
+                    style={
                         "fontSize": "0.9em",
                         "color": "#4A5568",
                         "marginLeft": "1rem",
@@ -231,16 +189,32 @@ def ProjectCard(
                     }
                 ) for detail in details],
                 spacing="2",
-                margin_top="1rem"
+                margin_top="1rem",
+                style={
+                    "opacity": rx.cond(ProjectState.show_more[card_id], 1, 0),
+                    "maxHeight": rx.cond(ProjectState.show_more[card_id], "1000px", "0px"),
+                    "overflow": "hidden",
+                    "transition": "all 1s cubic-bezier(0.4, 0, 0.2, 1)",  # Aumentado a 1 segundo
+                    "willChange": "opacity, max-height",
+                    "transitionDelay": "0.1s"  # Retardo inicial para sincronizar mejor
+                }
             ),
         ),
         rx.button(
             rx.hstack(
                 rx.cond(
                     ProjectState.show_more[card_id],
-                    "Mostrar menos ←",
-                    "Leer más →",
-                ),
+                    rx.cond(
+                        LanguageState.language == "es",
+                        "Mostrar menos ←",
+                        "Hide ←",
+                        ),
+                    rx.cond(
+                        LanguageState.language == "es",
+                        "Leer más →",
+                        "See more →",
+                        ),
+                    ),
                 rx.cond(
                     github_url,
                     rx.link(
@@ -257,12 +231,11 @@ def ProjectCard(
             size="1",
             style={
                 "marginTop": "auto",
-                "alignSelf": "flex-end"
             }
         ),
-        style={  # Mejoras de estilo
+        style={
             "boxShadow": "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px",
-            "transition": "transform 0.2s",
+            "transition": "transform 0.9s ease-in-out, height 1s ease-in-out",  # Sincronizado con 1s
             "_hover": {"transform": "scale(1.02)"}
         }
     )
@@ -273,13 +246,12 @@ def projects() -> rx.Component:
 
     return base_page(
         rx.vstack(
-            rx.heading("Here comes everything I've done", size="9", align="center", margin_top="4rem"),
-            rx.text(
-                "Look at this",
-                size="5",
-                align="center",
-                margin_bottom="2rem"
-            ),
+            rx.heading(rx.cond(
+                        language == "es",
+                        translations["es"]["projects"]["title"][0],
+                        translations["en"]["projects"]["title"][0],
+                    ),
+                    size="9", align="center", margin_top="4rem"),
             rx.grid(
                 *[ProjectCard(
                     card_id=project["id"],

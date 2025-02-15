@@ -2,6 +2,7 @@ import reflex as rx
 import asyncio
 from ..ui.base import base_page
 from .. import navigation
+from ..translations import translations, LanguageState
 
 class ContactState(rx.State):
     form_data: dict = {}
@@ -23,6 +24,7 @@ class ContactState(rx.State):
 
 @rx.page(route=navigation.routes.CONTACT_ROUTE)
 def contact() -> rx.Component:
+    language = LanguageState.language
     my_form = rx.form(
             rx.vstack(
                 rx.input(
@@ -43,7 +45,13 @@ def contact() -> rx.Component:
                     name="message",
                     type="text"
                 ),
-                rx.button("Submit", type="submit"),
+                rx.button(
+                 rx.cond(
+                        language == "es",
+                        translations["es"]["contact"]["button"][0],
+                        translations["en"]["contact"]["button"][0],
+                    ),
+                    type="submit"),
 
             align="center"
             ),
@@ -51,9 +59,19 @@ def contact() -> rx.Component:
             reset_on_submit=True,
         )
     my_child = rx.vstack(
-            rx.heading("Contact page", size="9"),
+            rx.heading(
+                 rx.cond(
+                        language == "es",
+                        translations["es"]["contact"]["title"][0],
+                        translations["en"]["contact"]["title"][0],
+                    ),
+                    size="9"),
             rx.text(
-                "Here you can contact me!",
+                 rx.cond(
+                        language == "es",
+                        translations["es"]["contact"]["subtitle"][0],
+                        translations["en"]["contact"]["subtitle"][0],
+                    ),
                 size="5",
             ),
             rx.cond(ContactState.did_submit, ContactState.thank_you, ""),
