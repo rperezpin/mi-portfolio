@@ -11,7 +11,7 @@ def base_page(child: rx.Component, *args, **kwargs) -> rx.Component:
             light=rx.box(
                 child,
                 style={
-                    "backgroundImage": "url('/bg3.jpeg')",
+                    "backgroundImage": "url('/bg2.jpg')",
                     "backgroundSize": "cover",
                     "backgroundPosition": "center",
                     "backgroundAttachment": "fixed",  # El fondo se queda fijo al hacer scroll
@@ -23,7 +23,7 @@ def base_page(child: rx.Component, *args, **kwargs) -> rx.Component:
             dark=rx.box(
                 child,
                 style={
-                    "backgroundImage": "url('/bg1.jpeg')",
+                    "backgroundImage": "url('/bg4.jpg')",
                     "backgroundSize": "cover",
                     "backgroundPosition": "center",
                     "backgroundAttachment": "fixed",  # El fondo se queda fijo al hacer scroll
