@@ -32,7 +32,7 @@ def base_page(child: rx.Component, *args, **kwargs) -> rx.Component:
                     },
             ),
         ),
-        rx.desktop_only(
+        rx.tablet_and_desktop(
             rx.color_mode.button(position="bottom-left")
         ),
         # Botón flotante para volver arriba

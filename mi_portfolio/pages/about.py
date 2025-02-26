@@ -2,20 +2,39 @@ import reflex as rx
 from ..ui.base import base_page
 from .. import navigation
 from ..translations import translations, LanguageState
+import time
 
 class TimelineState(rx.State):
     # Estado para controlar qué textos están visibles
     visible_text: str | None = None
+    hovered_text: str | None = None  # New state for hover
+    last_hover_time: float = 0.0  # Track last hover time
 
     def toggle_text(self, text_id: str):
         """Alterna la visibilidad del texto."""
         self.visible_text = None if self.visible_text == text_id else text_id
 
+    def set_hovered_text(self, text_id: str, is_hovered: bool):
+        """Set the hovered text state with debounce."""
+        current_time = time.time()
+        if current_time - self.last_hover_time > 0.1:  # 100ms debounce
+            self.hovered_text = text_id if is_hovered else None
+            self.last_hover_time = current_time
+
+    def reset_visible_text(self):
+        """Reset the visible text."""
+        self.visible_text = None
+
+    def handle_global_click(self):
+        """Hide visible text when clicking outside."""
+        if self.visible_text:
+            self.visible_text = None
 
 def timeline_item(text: str, icon: str, align: str, button_text: str, item_id: str) -> rx.Component:
     """Crea un elemento individual de la línea de tiempo."""
     is_left = align == "left"
     is_visible = TimelineState.visible_text == item_id
+    is_hovered = TimelineState.hovered_text == item_id  # Check hover state
 
     return rx.box(
         rx.hstack(
@@ -59,52 +78,64 @@ def timeline_item(text: str, icon: str, align: str, button_text: str, item_id: s
                 "paddingLeft": "4rem" if not is_left else "1rem",
             },
         ),
-        # Hover card para el botón
-        rx.hover_card.root(
-            rx.hover_card.trigger(
-                rx.button(
-                    "",
-                    on_click=lambda: TimelineState.toggle_text(item_id),  # Usamos on_click aquí
+        # Replace hover card with a tooltip for mobile compatibility
+        rx.tooltip(
+            rx.button(
+                "",
+                on_click=lambda: TimelineState.toggle_text(item_id),
+                on_mouse_enter=lambda: TimelineState.set_hovered_text(item_id, True),
+                on_mouse_leave=lambda: TimelineState.set_hovered_text(item_id, False),
+                style={
+                    "borderRadius": "50%",
+                    "width": "16px",
+                    "height": "16px",
+                    "position": "absolute",
+                    "left": "50%",
+                    "transform": "translateX(-50%)",
+                    "backgroundColor": "#3182CE",
+                    "border": "4px solid white",
+                    "boxShadow": "0 0 0 2px #3182CE",
+                    "marginTop": "4em",
+                    "marginBottom": "4em",
+                    "cursor": "pointer",
+                },
+            ),
+            label=button_text,
+            background_color="#3182CE",
+            color="white",
+            border_radius="8px",
+            padding="1rem",
+            placement="top" if is_left else "bottom",
+        ),
+        # Add conditional box for click or hover state using bitwise operators
+        rx.cond(
+            is_visible | is_hovered,
+            rx.box(
+                rx.text(
+                    button_text,
                     style={
-                        "borderRadius": "50%",
-                        "width": "16px",
-                        "height": "16px",
+                        "color": "white",
+                        "fontSize": "1rem",
+                        "backgroundColor": "#3182CE",
+                        "padding": "1rem",
+                        "borderRadius": "8px",
+                        "boxShadow": "0 4px 6px rgba(0,0,0,0.2)",
                         "position": "absolute",
                         "left": "50%",
                         "transform": "translateX(-50%)",
-                        "backgroundColor": "#3182CE",
-                        "border": "4px solid white",
-                        "boxShadow": "0 0 0 2px #3182CE",
-                        "marginTop": "4em",
-                        "marginBottom": "4em",
-                    },
-                ),
+                        "marginTop": "2em",
+                        "zIndex": "1000",
+                        "width": "max-content",
+                        "maxWidth": "80%",
+                    }
+                )
             ),
-            rx.hover_card.content(
-                rx.text(
-                    button_text,
-                    style={"color": "white", 
-                           "fontSize": "1rem",
-                           "backgroundColor": "#3182CE",
-                           "padding": "1rem",
-                           "borderRadius": "8px",
-                           "boxShadow": "0 4px 6px rgba(0,0,0,0.2)",
-                           
-                    },
-                ),
-                style={
-                    "@media (max-width: 480px)": {
-                        "maxWidth": "50%",
-                    },
-                    },
-                align="start" if not is_left else "end",                
-            ),
+            rx.box()
         ),
         position="relative",
-        margin_y="4em",  # Aumentamos el espacio vertical entre items
+        margin_y="4em",
         width="100%",
     )
-
 
 @rx.page(route=navigation.routes.ABOUT_ROUTE)
 def about() -> rx.Component:
@@ -308,4 +339,5 @@ def about() -> rx.Component:
                 "minHeight": "85vh",
             },
         ),
+            on_click=TimelineState.handle_global_click,
     )

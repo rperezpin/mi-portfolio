@@ -9,18 +9,18 @@ class ContactState(rx.State):
     did_submit: bool = False
 
     @rx.var
-    def thank_you(self):
+    def thank_you(self) -> str:  # Added type annotation here
         first_name = self.form_data.get("first_name") or ""
         return f"Thank you {first_name}".strip() + "!"
 
     async def handle_submit(self, forma_data: dict):
-            print(forma_data)
-            self.form_data = forma_data
-            self.did_submit = True
-            yield
-            await asyncio.sleep(2)
-            self.did_submit = False
-            yield
+        print(forma_data)
+        self.form_data = forma_data
+        self.did_submit = True
+        yield
+        await asyncio.sleep(2)
+        self.did_submit = False
+        yield
 
 @rx.page(route=navigation.routes.CONTACT_ROUTE)
 def contact() -> rx.Component:

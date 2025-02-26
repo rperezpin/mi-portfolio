@@ -251,7 +251,7 @@ def projects() -> rx.Component:
                         translations["es"]["projects"]["title"][0],
                         translations["en"]["projects"]["title"][0],
                     ),
-                    size="9", align="center", margin_top="4rem"),
+                    size="9", align="center", margin_top="4rem", padding="1rem"),
             rx.grid(
                 *[ProjectCard(
                     card_id=project["id"],
