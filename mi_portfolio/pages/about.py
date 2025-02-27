@@ -90,6 +90,7 @@ def timeline_item(text: str, icon: str, align: str, button_text: str, item_id: s
             color="white",
             border_radius="8px",
             padding="1rem",
+            font_size="5em",
             placement="top" if is_left else "bottom",
         ),
         # Versión móvil con clic

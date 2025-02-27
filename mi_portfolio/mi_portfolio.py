@@ -53,11 +53,15 @@ def index() -> rx.Component:
     return base_page(my_child)
 
 
-app = rx.App(    
+app = rx.App(
     theme=rx.theme(
         accent_color="iris",
         gray_color="slate",
+        radius="medium"
     ),
 )
 
-app.add_page(index)
+app.add_page(index, route="/")
+app.add_page(pages.about, route=navigation.routes.ABOUT_ROUTE)
+app.add_page(pages.projects, route=navigation.routes.PROJECTS_ROUTE)
+app.add_page(pages.contact, route=navigation.routes.CONTACT_ROUTE)
