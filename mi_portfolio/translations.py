@@ -129,6 +129,7 @@ translations = {
                     ]
                 }
             ],
+            "contact_button": ["Proponme el siguiente"],
         },
         "contact": {
             "title": ["Página de contacto"],
@@ -255,6 +256,7 @@ translations = {
                     ]
                 }
             ],
+            "contact_button": ["Make your suggestion"],
         },
         "contact": {
             "title": ["Contact page"],

@@ -7,34 +7,17 @@ import time
 class TimelineState(rx.State):
     # Estado para controlar qué textos están visibles
     visible_text: str | None = None
-    hovered_text: str | None = None  # New state for hover
-    last_hover_time: float = 0.0  # Track last hover time
+    last_clicked: str | None = None  # Nuevo estado para rastrear clics
 
     def toggle_text(self, text_id: str):
-        """Alterna la visibilidad del texto."""
-        self.visible_text = None if self.visible_text == text_id else text_id
-
-    def set_hovered_text(self, text_id: str, is_hovered: bool):
-        """Set the hovered text state with debounce."""
-        current_time = time.time()
-        if current_time - self.last_hover_time > 0.1:  # 100ms debounce
-            self.hovered_text = text_id if is_hovered else None
-            self.last_hover_time = current_time
-
-    def reset_visible_text(self):
-        """Reset the visible text."""
-        self.visible_text = None
-
-    def handle_global_click(self):
-        """Hide visible text when clicking outside."""
-        if self.visible_text:
-            self.visible_text = None
+        """Alterna la visibilidad del texto"""
+        self.last_clicked = text_id
+        self.visible_text = text_id if self.visible_text != text_id else None
 
 def timeline_item(text: str, icon: str, align: str, button_text: str, item_id: str) -> rx.Component:
     """Crea un elemento individual de la línea de tiempo."""
     is_left = align == "left"
     is_visible = TimelineState.visible_text == item_id
-    is_hovered = TimelineState.hovered_text == item_id  # Check hover state
 
     return rx.box(
         rx.hstack(
@@ -56,7 +39,7 @@ def timeline_item(text: str, icon: str, align: str, button_text: str, item_id: s
                         light="#f7f7f7",
                         dark="#2d3748",
                     ),
-                    "padding": "2rem",
+                    "padding": "1.5rem",
                     "borderRadius": "8px",
                     "boxShadow": "0 4px 6px rgba(0,0,0,0.1)",
                     "maxWidth": "60%",
@@ -82,9 +65,6 @@ def timeline_item(text: str, icon: str, align: str, button_text: str, item_id: s
         rx.tooltip(
             rx.button(
                 "",
-                on_click=lambda: TimelineState.toggle_text(item_id),
-                on_mouse_enter=lambda: TimelineState.set_hovered_text(item_id, True),
-                on_mouse_leave=lambda: TimelineState.set_hovered_text(item_id, False),
                 style={
                     "borderRadius": "50%",
                     "width": "16px",
@@ -98,18 +78,63 @@ def timeline_item(text: str, icon: str, align: str, button_text: str, item_id: s
                     "marginTop": "4em",
                     "marginBottom": "4em",
                     "cursor": "pointer",
+                    # Ocultar tooltip en móviles
+                    "@media (max-width: 768px)": {
+                        "display": "none"
+                    }
                 },
+                on_click=TimelineState.toggle_text(item_id),
             ),
-            label=button_text,
+            content=button_text,
             background_color="#3182CE",
             color="white",
             border_radius="8px",
             padding="1rem",
             placement="top" if is_left else "bottom",
         ),
-        # Add conditional box for click or hover state using bitwise operators
+        # Versión móvil con clic
+        rx.button(
+            "",
+            style={
+                "borderRadius": "50%",
+                "width": "16px",
+                "height": "16px",
+                "position": "absolute",
+                "left": "50%",
+                "transform": "translateX(-50%)",
+                "backgroundColor": "#3182CE",
+                "border": "4px solid white",
+                "boxShadow": "0 0 0 2px #3182CE",
+                "marginTop": "4em",
+                "marginBottom": "4em",
+                "cursor": "pointer",
+                # Ocultar en desktop
+                "@media (min-width: 769px)": {
+                    "display": "none"
+                }
+            },
+            on_click=TimelineState.toggle_text(item_id),
+        ),
+        # Overlay para cerrar al hacer clic fuera
         rx.cond(
-            is_visible | is_hovered,
+            is_visible,
+            rx.box(
+                style={
+                    "position": "fixed",
+                    "top": "0",
+                    "left": "0",
+                    "width": "100%",
+                    "height": "100%",
+                    "zIndex": "999",  # Debajo del texto pero encima de otros elementos
+                    "backgroundColor": "rgba(0,0,0,0.01)",  # Transparente pero clickeable
+                    "@media (min-width: 769px)": {"display": "none"}
+                },
+                on_click=TimelineState.toggle_text(item_id)
+            )
+        ),
+        # Mostrar texto en móvil (ajustar z-index)
+        rx.cond(
+            is_visible,
             rx.box(
                 rx.text(
                     button_text,
@@ -124,13 +149,16 @@ def timeline_item(text: str, icon: str, align: str, button_text: str, item_id: s
                         "left": "50%",
                         "transform": "translateX(-50%)",
                         "marginTop": "2em",
-                        "zIndex": "1000",
+                        "zIndex": "1000",  # Encima del overlay
                         "width": "max-content",
                         "maxWidth": "80%",
+                        # Solo mostrar en móvil
+                        "@media (min-width: 769px)": {
+                            "display": "none"
+                        }
                     }
                 )
             ),
-            rx.box()
         ),
         position="relative",
         margin_y="4em",
@@ -337,7 +365,13 @@ def about() -> rx.Component:
             ),
             style={
                 "minHeight": "85vh",
+                "width": "100%",  # Asegurar área clickeable
+                "height": "100%",  # Expandir altura completa
             },
         ),
-            on_click=TimelineState.handle_global_click,
+        style={
+            "minHeight": "100vh",
+            "width": "100%",
+            "position": "relative",
+        }
     )

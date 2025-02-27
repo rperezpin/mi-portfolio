@@ -272,7 +272,29 @@ def projects() -> rx.Component:
                 ],
                 width="85%",
             ),
+            rx.box(
+                    rx.link(
+                        rx.button(  rx.cond(
+                        language == "es",
+                        translations["es"]["projects"]["contact_button"][0],
+                        translations["en"]["projects"]["contact_button"][0],
+                    ),  
+                            rx.icon("corner-down-right"),
+                            style={
+                                "position": "absolute",
+                                "left": "50%",
+                                "transform": "translateX(-50%)",
+                                "padding": "1.5rem",
+                                "borderRadius": "8px",
+                            }
+                        ),
+                        href=navigation.routes.CONTACT_ROUTE,
+                    ),
+                    margin_top="4rem",
+                    margin_bottom="8rem",
+                ),
             justify="center",
             align="center",
+            
         )
     )
