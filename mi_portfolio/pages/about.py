@@ -85,13 +85,15 @@ def timeline_item(text: str, icon: str, align: str, button_text: str, item_id: s
                 },
                 on_click=TimelineState.toggle_text(item_id),
             ),
-            content=button_text,
+            content=button_text,            
             background_color="#3182CE",
             color="white",
             border_radius="8px",
             padding="1rem",
-            font_size="5em",
             placement="top" if is_left else "bottom",
+            style={                
+                "fontSize": "1.8rem",
+            }
         ),
         # Versión móvil con clic
         rx.button(

@@ -48,7 +48,7 @@ def base_page(child: rx.Component, *args, **kwargs) -> rx.Component:
                     "width": "100vw",  # Ocupa el 100% del ancho del viewport
                     "height": "100%",  # Nueva propiedad
                     "minHeight": "-webkit-fill-available; min-height: 100vh",  # Fix para Safari
-                    "position": "relative",  # Mejor manejo de posición
+                    "position": "relative",  # Mejor manejo de posición                    
                 },
             ),
         ),
