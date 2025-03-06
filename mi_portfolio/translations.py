@@ -21,34 +21,34 @@ translations = {
                 ],
         },
         "home": {
-            "title": ["¡Bienvenido a mi rincón!"],
-            "subtitle": ["De alguna forma, este es el proyecto sobre mis proyectos"],
-            "home_button": ["Ven a conocer un poco más de mi"],
+            "title": ["¡Bienvenido/a a mi Portfolio Digital!"],
+            "subtitle": ["Este sitio es, en cierto modo, el proyecto que reúne todos mis proyectos."],
+            "home_button": ["Descubre más sobre mí"],
         },
         "about": {
             "timeline": [
-                "Soy Ingeniero Agrícola y Energético con especialización en Digitalización Agrícola.",
+                "Ingeniero Agrícola y Energético especializado en Transformación Digital Agrícola.",
                 "Descubrí mi pasión por el análisis de datos aplicado a la agricultura inteligente.",
-                "Inicié mi carrera como Data Analyst, donde puse en práctica mis conocimientos técnicos.",
+                "Comencé mi carrera como Data Analyst, donde puse en práctica mis conocimientos técnicos.",
                 "Gané experiencia trabajando con Big Data y técnicas de Machine Learning en el sector agro.",
                 "Buscando nuevos retos, evolucioné profesionalmente hacia proyectos diferentes.",
                 "Comencé a desarrollar soluciones basadas en IoT para la agricultura de precisión.",
                 "Participé en el desarrollo integral de una plataforma tecnológica para la optimización agrícola.",
-                "Nunca he dejado de formarme en tecnologías emergentes y metodologías ágiles.",
-                "Hoy sigo aprendiendo y aplicando conocimientos en digitalización y desarrollo."
+                "Nunca he dejado de formarme en tecnologías emergentes y metodologías nuevas.",
+                "Actualmente, sigo perfeccionando mis conocimientos en digitalización y desarrollo tecnológico."
             ],
             "time_step": [
                 "Mi formación me abrió las puertas a mis primeros trabajos como ingeniero técnico.",
                 "Fue entonces cuando escribí mis primeras líneas de código aplicadas al sector.",
                 "Aprendí a analizar y modelar datos para la predicción de cosechas y optimización de cultivos.",
-                "Me especialicé en herramientas clave como Python, R, SQL y visualización de datos.",
+                "Me especialicé en herramientas clave como Python, R, SQL y análisis de datos.",
                 "Aunque seguí en el ámbito de la digitalización agrícola, la exploré desde otra perspectiva.",
                 "Desarrollé software para plataformas de monitorización agrícola e IoT.",
                 "Trabajé en la configuración de servidores, broker MQTT, bases de datos y apps de visualización.",
                 "Profundicé en Ingeniería de Datos, Desarrollo de Aplicaciones, Inteligencia Artificial...",
-                "Y objetivo es seguir creciendo y abrirme a todo tipo de sectores."
+                "Mi objetivo es seguir creciendo y explorar oportunidades en todo tipo de sectores."
             ],
-            "projects_button": ["Veamos algunos de mis proyectos"],
+            "projects_button": ["Explora algunos de mis proyectos"],
         },
         "projects": {
             "title":["Estos son algunos de mis proyectos"],
@@ -129,12 +129,12 @@ translations = {
                     ]
                 }
             ],
-            "contact_button": ["Proponme el siguiente"],
+            "contact_button": ["¿Tienes una idea? ¡Compártela conmigo!"],
         },
         "contact": {
-            "title": ["Página de contacto"],
-            "subtitle": ["¡Ponte en contacto conmigo!"],
-            "button": ["Enviar"],
+            "title": ["Contáctame"],
+            "subtitle": ["¡Estoy disponible para nuevas oportunidades y colaboraciones!"],
+            "button": ["Enviar mensaje"],
         },
     },
     "en": {
@@ -148,34 +148,34 @@ translations = {
                 ],
         },
         "home": {
-            "title": ["Welcome to my place!"],
+            "title": ["Welcome to my Digital Portfolio"],
             "subtitle": ["In some way, this is the project about all my projects"],
-            "home_button": ["Come to know a little more about me"],
+            "home_button": ["Learn more about me"],
         },
         "about": {
             "timeline": [
-                "I am an Agricultural and Energy Engineer with a specialization in Agricultural Digitalization.",
+                "Agricultural and Energy Engineer specializing in Agricultural Digitalization.",
                 "I discovered my passion for data analysis applied to smart farming.",
-                "I started my career as a Data Analyst, where I put my technical knowledge into practice.",
-                "I gained experience working with Big Data and Machine Learning techniques in the agricultural sector.",
+                "I started my career as a Data Analyst, applying my technical expertise.",
+                "I gained experience in Big Data and Machine Learning within the agricultural sector.",
                 "Seeking new challenges, I evolved professionally into different projects.",
                 "I began developing IoT-based solutions for precision agriculture.",
                 "I participated in the end-to-end development of a technology platform for agricultural optimization.",
-                "I have never stopped learning about emerging technologies and agile methodologies.",
-                "Today, I continue to learn and apply knowledge in digitalization and development."
+                "I have never stopped learning about emerging technologies and new methodologies.",
+                "Currently, I continue to refine my expertise in digitalization and technological development."
             ],
             "time_step": [
                 "My education opened the doors to my first jobs as a technical engineer.",
                 "That's when I wrote my first lines of code applied to the sector.",
                 "I learned to analyze and model data for crop prediction and optimization.",
-                "I specialized in key tools such as Python, R, SQL, and data visualization.",
+                "I specialized in key tools such as Python, R, SQL, and data analysis.",
                 "Although I remained in the field of agricultural digitalization, I explored it from a different perspective.",
                 "I developed software for agricultural monitoring platforms and IoT solutions.",
                 "I worked on server configuration, MQTT brokers, databases, and visualization apps.",
                 "I deepened my knowledge in Data Engineering, Application Development, Artificial Intelligence...",
                 "My goal is to continue growing and expand into different industries."
             ],
-            "projects_button": ["Let's see some of my projects"],
+            "projects_button": ["Explore some of my projects"],
         },
         "projects": {
             "title": ["These are some of my projects"],
@@ -256,12 +256,12 @@ translations = {
                     ]
                 }
             ],
-            "contact_button": ["Make your suggestion"],
+            "contact_button": ["Have an idea? Let’s discuss it!"],
         },
         "contact": {
-            "title": ["Contact page"],
-            "subtitle": ["Here you can contact me!"],
-            "button": ["Submit"],
+            "title": ["Get in Touch"],
+            "subtitle": ["I’m open to new opportunities and collaborations!"],
+            "button": ["Submit Message"],
         },
     },
 }
