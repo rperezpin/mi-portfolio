@@ -30,7 +30,7 @@ translations = {
                 "Ingeniero Agrícola y Energético especializado en Transformación Digital Agrícola.",
                 "Descubrí mi pasión por el análisis de datos aplicado a la agricultura inteligente.",
                 "Comencé mi carrera como Data Analyst, donde puse en práctica mis conocimientos técnicos.",
-                "Gané experiencia trabajando con Big Data y técnicas de Machine Learning en el sector agro.",
+                "Gané experiencia trabajando con Big Data y técnicas de Machine Learning en el sector agrícola.",
                 "Buscando nuevos retos, evolucioné profesionalmente hacia proyectos diferentes.",
                 "Comencé a desarrollar soluciones basadas en IoT para la agricultura de precisión.",
                 "Participé en el desarrollo integral de una plataforma tecnológica para la optimización agrícola.",
@@ -39,12 +39,12 @@ translations = {
             ],
             "time_step": [
                 "Mi formación me abrió las puertas a mis primeros trabajos como ingeniero técnico.",
-                "Fue entonces cuando escribí mis primeras líneas de código aplicadas al sector.",
+                "Fue entonces cuando escribí mis primeras líneas de código aplicadas al sector agrícola.",
                 "Aprendí a analizar y modelar datos para la predicción de cosechas y optimización de cultivos.",
                 "Me especialicé en herramientas clave como Python, R, SQL y análisis de datos.",
-                "Aunque seguí en el ámbito de la digitalización agrícola, la exploré desde otra perspectiva.",
+                "Aunque continué en el ámbito de la digitalización agrícola, exploré nuevas perspectivas.",
                 "Desarrollé software para plataformas de monitorización agrícola e IoT.",
-                "Trabajé en la configuración de servidores, broker MQTT, bases de datos y apps de visualización.",
+                "Trabajé en todo el flujo de datos, desde los sensores hasta el desarrollo de la aplicación.",
                 "Profundicé en Ingeniería de Datos, Desarrollo de Aplicaciones, Inteligencia Artificial...",
                 "Mi objetivo es seguir creciendo y explorar oportunidades en todo tipo de sectores."
             ],
@@ -171,7 +171,7 @@ translations = {
                 "I specialized in key tools such as Python, R, SQL, and data analysis.",
                 "Although I remained in the field of agricultural digitalization, I explored it from a different perspective.",
                 "I developed software for agricultural monitoring platforms and IoT solutions.",
-                "I worked on server configuration, MQTT brokers, databases, and visualization apps.",
+                "I worked across the entire data pipeline, from sensors to application development.",
                 "I deepened my knowledge in Data Engineering, Application Development, Artificial Intelligence...",
                 "My goal is to continue growing and expand into different industries."
             ],
